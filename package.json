@@ -1,9 +1,7 @@
 {
-  "homepage": "https://hannah-thesassy.github.io/hospital-manage/",
   "name": "hospital-manage",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://hannah-thesassy.github.io/demo",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
