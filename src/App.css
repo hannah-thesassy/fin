@@ -1,0 +1,435 @@
+:root {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(89.81deg, #0098B9 0.17%, #003844 99.84%);
+  color: #9e9ea4;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.whole-container {
+  display: flex;
+}
+
+.icon {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 20px;
+}
+.icon_header {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 26px;
+}
+.icon, .icon_header {
+  margin-right: 5px;
+}
+
+.close_icon {
+  color: red;
+  margin-left: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* .grid-container {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    'sidebar header header header'
+    'sidebar main main main';
+  height: 100vh;
+} */
+
+/* Header  */
+.header {
+  grid-area: header;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* End Header  */
+
+/* Sidebar  */
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  font-family: Rounded Mplus 1c Bold;
+  color: #006B82;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26.73px;
+  text-align: left;
+  background-color: transparent;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 0px 30px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 100px 0;
+  list-style-type: none;
+  width: 249px;
+  height: 344px;
+  top: 464px;
+  gap: 10px;
+  opacity: 0px;
+
+}
+
+.sidebar-list-item {
+
+  margin: 10px 0px;
+  background-color: white;
+  font-size: 18px;
+  width: 160px;
+  height: 25px;
+  padding: 11px 25px 11px 25px;
+  border-radius: 0px 50px 50px 0px;
+  opacity: 0px;
+
+}
+
+/* .sidebar-list-item:link {
+  text-decoration: none;
+}
+
+.sidebar-list-item:visited {
+  text-decoration: none;
+} */
+
+.sidebar-list-item:hover {
+  background-color: #006B82;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9e9ea4;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+/* End Sidebar  */
+
+
+/* Main  */  
+.dashboard-main-container {
+  margin-top: 60px;
+  background-color: white;
+  width: 730px;
+  height: 522px;
+  padding: 40px;
+  border-radius: 32px;
+  display: grid;
+  grid-template-rows: auto auto; /* 2 hàng với chiều cao tự động */
+  grid-template-columns: auto auto; /* 2 cột với độ rộng tự động */
+  grid-gap: 40px; /* Khoảng cách giữa các phần tử */
+  align-items: center;
+}
+
+/* .main-cards {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+.card {
+  width: 60%;
+  height: 60%;
+  background-color: #f0f0f0; /* Màu nền card */
+  border-radius: 8px; /* Bo tròn góc */
+  padding: 40px; /* Khoảng cách nội dung từ viền card */
+}
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card h1 {
+  font-size: 24px; /* Kích thước chữ số lớn */
+  margin: 0;
+}
+
+.card_icon {
+  font-size: 36px; /* Kích thước biểu tượng */
+  color: #007bff; /* Màu biểu tượng */
+}
+
+/* Định dạng cho card */
+.card:nth-child(1) {
+  grid-row: 1; /* Card đầu tiên nằm ở hàng thứ 1 */
+  grid-column: 1; /* Card đầu tiên nằm ở cột thứ 1 */
+}
+
+.card:nth-child(2) {
+  grid-row: 1; /* Card thứ hai nằm ở hàng thứ 1 */
+  grid-column: 2; /* Card thứ hai nằm ở cột thứ 2 */
+}
+
+.card:nth-child(3) {
+  grid-row: 2; /* Card thứ ba nằm ở hàng thứ 2 */
+  grid-column: 1; /* Card thứ ba nằm ở cột thứ 1 */
+}
+
+
+
+/* End Main  */
+
+
+
+
+/* Main  */  
+.doctor-main-container {
+  margin-top: 60px;
+  background-color: white;
+  width: 85%;
+  height: 85%;
+  top: 154px;
+  left: 394px;
+  border-radius: 32px;
+  gap: 0px;
+  opacity: 0px;
+
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  color: #006B82;
+}
+
+.doctor-header {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto; /* Tổng số bác sĩ và h1 chiếm không gian tự nhiên, thanh tìm kiếm chiếm phần còn lại, nút thêm bác sĩ chiếm không gian tự nhiên */
+  align-items: center;
+}
+
+.doctor-total {
+  margin-right: 20px; /* Khoảng cách giữa tổng số bác sĩ và thanh tìm kiếm */
+}
+
+.total-doctors {
+  font-size: 40px !important; 
+  padding: 10px;
+  padding-left: 0;
+}
+
+.search-input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.total-doctors {
+  font-size: 16px;
+}
+
+/* Các tùy chỉnh khác có thể được thêm vào đây */
+
+
+/* Các tùy chỉnh khác có thể được thêm vào đây */
+
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cột */
+  grid-template-rows: repeat(3, auto); /* 3 hàng */
+  grid-gap: 20px;
+}
+
+.doctor-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Các tùy chỉnh khác có thể được thêm vào đây */
+
+
+/* Các tùy chỉnh khác có thể được thêm vào đây */
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-cards {
+  padding: 50px 50px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  row-gap: 50px;
+  column-gap: 10%;
+  margin: 15px 0;
+}
+
+
+/* End Main  */
+
+
+/* Main  */  
+.medicine-main-container {
+  display: flex;
+  margin-top: 60px;
+  background-color: white;
+  width: 85%;
+  height: 70%;
+  top: 154px;
+  left: 394px;
+  border-radius: 32px;
+  gap: 0px;
+  opacity: 0px;
+
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  color: #006B82;
+}
+
+.medicine-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Tổng số bác sĩ và h1 chiếm không gian tự nhiên, thanh tìm kiếm chiếm phần còn lại, nút thêm bác sĩ chiếm không gian tự nhiên */
+  align-items: center;
+}
+
+.medicine-header .search-input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.medicine-header .add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Bảng danh sách thuốc */
+.medicine-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.medicine-table th,
+.medicine-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.medicine-table th {
+  background-color: #f2f2f2;
+}
+
+/* Hiệu ứng khi di chuột qua mỗi hàng */
+.medicine-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* Medium <= 992px */
+  
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+/* Small <= 768px */
+  
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+  .hedaer-left {
+    display: none;
+  }
+}
