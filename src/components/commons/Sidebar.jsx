@@ -17,12 +17,12 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         <ul className='sidebar-list'>
 
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/hospital-manage/" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
                     <div>Trang chủ</div>
                 </li>
             </Link>
-            <Link to="/doctor" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/hospital-manage/doctor" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
                     <div>Bác sĩ</div>
                 </li>
@@ -33,7 +33,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
             <li className='sidebar-list-item'>
                 <div>Bệnh nhân</div>
             </li>
-            <Link to="/medicine" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/hospital-manage/medicine" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
                     <div>Kiểm kê thuốc</div>
                 </li>

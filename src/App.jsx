@@ -35,7 +35,7 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<div className='whole-container'>
+        <Route path="/hospital-manage/" element={<div className='whole-container'>
 
           <Sidebar />
           <Header />
@@ -43,8 +43,8 @@ function App() {
           <Outlet />
         </div>}>
           <Route index element={<Dashboard />} />
-          <Route path="/doctor" index element={<Doctor />}/>
-          <Route path="/medicine" index element={<Medicine />}/>
+          <Route path="/hospital-manage/doctor" index element={<Doctor />}/>
+          <Route path="/hospital-manage/medicine" index element={<Medicine />}/>
         </Route>
       </Routes>
     </Router>
