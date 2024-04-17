@@ -36,6 +36,9 @@ const DoctorGrid = () => {
     setVisible(false);
   };
 
+  function handleClick() {
+    alert('You clicked me!');
+  }
 
 
   return (
@@ -71,8 +74,12 @@ const DoctorGrid = () => {
         <div className="doctor-grid">
             {doctors.map(doctor => (
                 <div key={doctor.id} className="doctor-card">
-                <h2>{doctor.name}</h2>
-                <p>Chuyên khoa: {doctor.specialty}</p>
+                  <h2>{doctor.name}</h2>
+                  <p>Chuyên khoa: {doctor.specialty}</p>
+                  <div>
+                    <button onClick={handleClick}>Sửa</button>
+                    <button onClick={handleClick}>Xoá</button>
+                  </div>
                 </div>
             ))}
         </div>

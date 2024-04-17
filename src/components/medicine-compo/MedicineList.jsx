@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import AddMedicineForm from './AddMedicineForm';
 
-function handleClick() {
-  alert('You clicked me!');
-}
-
-
 function MedicineList({ medicines, onEdit, onDelete }) {
-
   const [visible, setVisible] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   const showModal = () => {
     setVisible(true);
@@ -23,43 +19,58 @@ function MedicineList({ medicines, onEdit, onDelete }) {
     setVisible(false);
   };
 
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = medicines.slice(indexOfFirstItem, indexOfLastItem);
+
+  const renderMedicineRows = currentItems.map((medicine, id) => (
+    <tr key={id}>
+      <td>{medicine.name}</td>
+      <td>{medicine.type}</td>
+      <td>{medicine.price}</td>
+      <td>{medicine.quantity}</td>
+      <td>{medicine.expiryDate}</td>
+      <td>{medicine.supplier}</td>
+      <td>
+        <button onClick={handleClick}>Sửa</button>
+        <button onClick={handleClick}>Xoá</button>
+      </td>
+    </tr>
+  ));
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(medicines.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div>
-
       <div className='medicine-header'>
-          <h1 style={{
-              paddingRight: 20
-              }}>Danh sách thuốc</h1>
-          <div className="search-bar">
-              <input
-              className="search-input"
-              type="text"
-              placeholder="Tìm kiếm thuốc..."
-              // value={searchTerm}
-              // onChange={handleSearch}
-              />
-          </div>  
-          {/* <button className="add-button"
-              onClick={handleClick}>Thêm thuốc</button> */}
-
-          <Button className="add-button" type="primary" 
-            onClick={showModal}>
-            Thêm thuốc
-          </Button>
-          {/* <button 
-            onClick={handleClick}>Thêm bác sĩ</button> */}
-          <Modal
-            title="Add Medicine"
-            visible={visible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={null} // To hide the default footer buttons
-          >
-            <AddMedicineForm />
-          </Modal>
+        <h1 style={{ paddingRight: 20 }}>Danh sách thuốc</h1>
+        <div className="search-bar">
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Tìm kiếm thuốc..."
+          />
+        </div>
+        <Button className="add-button" type="primary" onClick={showModal}>
+          Thêm thuốc
+        </Button>
+        <Modal
+          title="Add Medicine"
+          visible={visible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+        >
+          <AddMedicineForm />
+        </Modal>
       </div>
-
 
       <table className="medicine-table">
         <thead>
@@ -74,24 +85,17 @@ function MedicineList({ medicines, onEdit, onDelete }) {
           </tr>
         </thead>
         <tbody>
-          {medicines.map((medicine, index) => (
-            <tr key={index}>
-              <td>{medicine.name}</td>
-              <td>{medicine.type}</td>
-              <td>{medicine.price}</td>
-              <td>{medicine.quantity}</td>
-              <td>{medicine.expiryDate}</td>
-              <td>{medicine.supplier}</td>
-              <td>
-                {/* <button onClick={() => onEdit(index)}>Sửa</button>
-                <button onClick={() => onDelete(index)}>Xoá</button> */}
-                <button onClick={handleClick}>Sửa</button>
-                <button onClick={handleClick}>Xoá</button>
-              </td>
-            </tr>
-          ))}
+          {renderMedicineRows}
         </tbody>
       </table>
+
+      <div style={{textAlign: 'center'}}>
+        {pageNumbers.map(number => (
+          <button key={number} onClick={() => setCurrentPage(number)}>
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
