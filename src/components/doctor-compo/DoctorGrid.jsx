@@ -29,7 +29,7 @@ const DoctorGrid = () => {
 
   function handleSearchClick() {
     if (searchVal === "") {
-      // setDoctors(initialDoctors);
+      setDoctors(initialDoctors);
       return;
     }
     const filterBySearch = initialDoctors.filter((doctor) => {

@@ -90,10 +90,24 @@ const initialMedicines = [
 
 // function MedicineList({ medicines, onEdit, onDelete }) {
 const MedicineList = () => {
+  const [searchVal, setSearchVal] = useState("");
   const [medicines, setMedicines] = useState(initialMedicines);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
+
+  function handleSearchClick() {
+    if (searchVal === "") {
+      setMedicines(initialMedicines);
+      return;
+    }
+    const filterBySearch = initialMedicines.filter((medicine) => {
+      if (medicine.name.toLowerCase().includes(searchVal.toLowerCase())) {
+        return medicine;
+      }
+    });
+    setMedicines(filterBySearch);
+  }
 
   const showModal = () => {
     setVisible(true);
@@ -154,6 +168,7 @@ const MedicineList = () => {
             className="search-input"
             type="text"
             placeholder="Tìm kiếm thuốc..."
+            onChange={e => { setSearchVal(e.target.value); handleSearchClick(); }}
           />
         </div>
         <Button className="add-button" type="primary" onClick={showModal}>
