@@ -228,7 +228,7 @@ body {
 .doctor-main-container {
   margin-top: 60px;
   background-color: white;
-  width: 85%;
+  width: 120%;
   height: 85%;
   top: 154px;
   left: 394px;
@@ -287,7 +287,7 @@ body {
 
 .doctor-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cột */
+  grid-template-columns: repeat(3, auto); /* 4 cột */
   grid-template-rows: repeat(3, auto); /* 3 hàng */
   grid-gap: 20px;
 }

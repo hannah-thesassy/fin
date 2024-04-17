@@ -187,7 +187,7 @@ const MedicineList = () => {
         </tbody>
       </table>
 
-      <div style={{textAlign: 'center'}}>
+      <div className="page-number" style={{textAlign: 'center'}}>
         {pageNumbers.map(number => (
           <button key={number} onClick={() => setCurrentPage(number)}>
             {number}

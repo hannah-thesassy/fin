@@ -23,8 +23,9 @@ const initialDoctors = [
 const DoctorGrid = () => {
 
   const [doctors, setDoctors] = useState(initialDoctors);
-
   const [visible, setVisible] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   const showModal = () => {
     setVisible(true);
@@ -51,6 +52,27 @@ const DoctorGrid = () => {
     const updatedInitialDoctors = initialDoctors.filter((doctor) => doctor.id !== id);
     initialDoctors(updatedInitialDoctors);
   };
+
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = doctors.slice(indexOfFirstItem, indexOfLastItem);
+
+  const renderDoctorRows = currentItems.map((doctor, id) => (
+      <div key={doctor.id} className="doctor-card">
+        <h2>{doctor.name}</h2>
+        <p>Chuyên khoa: {doctor.specialty}</p>
+        <div>
+          <button onClick={handleClick}>Sửa</button>
+          <button onClick={() => handleDelete(doctor.id)}>Xoá</button>
+        </div>
+      </div>
+  ));
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(doctors.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
 
   return (
@@ -84,7 +106,10 @@ const DoctorGrid = () => {
             </Modal>
         </div>
         <div className="doctor-grid">
-            {doctors.map(doctor => (
+          {/* <div> */}
+            {renderDoctorRows}
+          {/* </div> */}
+            {/* {doctors.map(doctor => (
                 <div key={doctor.id} className="doctor-card">
                   <h2>{doctor.name}</h2>
                   <p>Chuyên khoa: {doctor.specialty}</p>
@@ -93,7 +118,14 @@ const DoctorGrid = () => {
                     <button onClick={() => handleDelete(doctor.id)}>Xoá</button>
                   </div>
                 </div>
-            ))}
+            ))} */}
+        </div>
+        <div className="page-number" style={{textAlign: 'center', bottom: 0}}>
+          {pageNumbers.map(number => (
+            <button key={number} onClick={() => setCurrentPage(number)}>
+              {number}
+            </button>
+          ))}
         </div>
     </div>
   );
