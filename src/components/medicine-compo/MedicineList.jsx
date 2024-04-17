@@ -108,6 +108,13 @@ const MedicineList = () => {
   }, [searchVal]);
 
 
+  const handleAddMedicine = (newMedicine) => {
+    // Add the new medicine to the array
+    setMedicines([...medicines, newMedicine]);
+    // Close the modal
+    setVisible(false);
+  };
+
   // function handleSearchClick() {
   //   if (searchVal === "") {
   //     setMedicines(initialMedicines);
@@ -195,7 +202,7 @@ const MedicineList = () => {
           onCancel={handleCancel}
           footer={null}
         >
-          <AddMedicineForm />
+          <AddMedicineForm onAddMedicine={handleAddMedicine} />
         </Modal>
       </div>
 

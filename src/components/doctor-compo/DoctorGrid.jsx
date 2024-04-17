@@ -4,7 +4,7 @@ import AddDoctorForm from './AddDoctorForm';
 
 // Dữ liệu danh sách các bác sĩ
 const initialDoctors = [
-  { id: 1, name: 'Ngọc Hân', specialty: 'Nội trú' },
+  { id: 1, name: 'Bác sĩ 1', specialty: 'Nội trú' },
   { id: 2, name: 'Bác sĩ B', specialty: 'Nhi' },
   { id: 3, name: 'Bác sĩ C', specialty: 'Da liễu' },
   { id: 4, name: 'Bác sĩ D', specialty: 'Phẫu thuật' },
@@ -15,7 +15,7 @@ const initialDoctors = [
   { id: 9, name: 'Bác sĩ A', specialty: 'Nội trú' },
   { id: 10, name: 'Bác sĩ B', specialty: 'Nhi' },
   { id: 11, name: 'Bác sĩ C', specialty: 'Da liễu' },
-  { id: 12, name: 'Hoàng Lâm', specialty: 'Phẫu thuật' },
+  { id: 12, name: 'Bác sĩ 2', specialty: 'Phẫu thuật' },
   // Thêm các bác sĩ khác nếu cần
 ];
 
