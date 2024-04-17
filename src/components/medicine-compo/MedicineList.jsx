@@ -3,7 +3,7 @@ import { Button, Modal } from 'antd';
 import AddMedicineForm from './AddMedicineForm';
 
 // Khai báo danh sách thuốc
-const medicines = [
+const initialMedicines = [
   {
     id: 1,
     name: 'Paracetamol',
@@ -90,7 +90,7 @@ const medicines = [
 
 // function MedicineList({ medicines, onEdit, onDelete }) {
 const MedicineList = () => {
-
+  const [medicines, setMedicines] = useState(initialMedicines);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -112,8 +112,13 @@ const MedicineList = () => {
   }
 
   const handleDelete = (id) => {
-    // Gọi hàm onDelete và truyền id của loại thuốc cần xoá
-    onDelete(id);
+    // Xoá thuốc với id tương ứng khỏi danh sách hiện tại
+    const updatedMedicines = medicines.filter((medicine) => medicine.id !== id);
+    setMedicines(updatedMedicines);
+
+    // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
+    const updatedInitialMedicines = initialMedicines.filter((medicine) => medicine.id !== id);
+    initialMedicines(updatedInitialMedicines);
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -130,7 +135,7 @@ const MedicineList = () => {
       <td>{medicine.supplier}</td>
       <td>
         <button onClick={handleClick}>Sửa</button>
-        <button onClick={handleClick}>Xoá</button>
+        <button onClick={() => handleDelete(medicine.id)}>Xoá</button>
       </td>
     </tr>
   ));
