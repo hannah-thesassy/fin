@@ -2,7 +2,95 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import AddMedicineForm from './AddMedicineForm';
 
-function MedicineList({ medicines, onEdit, onDelete }) {
+// Khai báo danh sách thuốc
+const medicines = [
+  {
+    id: 1,
+    name: 'Paracetamol',
+    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    price: 5000,
+    quantity: 50,
+    expiryDate: '2025-12-31',
+    supplier: 'Nhà thuốc XYZ',
+  },
+  {
+    id: 2,
+    name: 'Amoxicillin',
+    type: 'Thuốc kháng sinh',
+    price: 10000,
+    quantity: 30,
+    expiryDate: '2027-06-30',
+    supplier: 'Nhà thuốc ABC',
+  },
+  {
+    id: 3,
+    name: 'Aspirin',
+    type: 'Thuốc chống viêm',
+    price: 7000,
+    quantity: 20,
+    expiryDate: '2026-08-15',
+    supplier: 'Nhà thuốc DEF',
+  },
+  {
+    id: 4,
+    name: 'Paracetamol',
+    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    price: 5000,
+    quantity: 50,
+    expiryDate: '2024-12-31',
+    supplier: 'Nhà thuốc XYZ',
+  },
+  {
+    id: 5,
+    name: 'Amoxicillin',
+    type: 'Thuốc kháng sinh',
+    price: 10000,
+    quantity: 30,
+    expiryDate: '2028-06-30',
+    supplier: 'Nhà thuốc ABC',
+  },
+  {
+    id: 6,
+    name: 'Aspirin',
+    type: 'Thuốc chống viêm',
+    price: 7000,
+    quantity: 20,
+    expiryDate: '2025-08-15',
+    supplier: 'Nhà thuốc DEF',
+  },
+  {
+    id: 7,
+    name: 'Paracetamol',
+    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    price: 5000,
+    quantity: 50,
+    expiryDate: '2026-12-31',
+    supplier: 'Nhà thuốc XYZ',
+  },
+  {
+    id: 8,
+    name: 'Amoxicillin',
+    type: 'Thuốc kháng sinh',
+    price: 10000,
+    quantity: 30,
+    expiryDate: '2027-06-30',
+    supplier: 'Nhà thuốc ABC',
+  },
+  {
+    id: 9,
+    name: 'Aspirin',
+    type: 'Thuốc chống viêm',
+    price: 7000,
+    quantity: 20,
+    expiryDate: '2027-08-15',
+    supplier: 'Nhà thuốc DEF',
+  },
+  // Thêm các thuốc khác vào đây
+];
+
+// function MedicineList({ medicines, onEdit, onDelete }) {
+const MedicineList = () => {
+
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -23,12 +111,17 @@ function MedicineList({ medicines, onEdit, onDelete }) {
     alert('You clicked me!');
   }
 
+  const handleDelete = (id) => {
+    // Gọi hàm onDelete và truyền id của loại thuốc cần xoá
+    onDelete(id);
+  };
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = medicines.slice(indexOfFirstItem, indexOfLastItem);
 
   const renderMedicineRows = currentItems.map((medicine, id) => (
-    <tr key={id}>
+    <tr key={medicine.id}>
       <td>{medicine.name}</td>
       <td>{medicine.type}</td>
       <td>{medicine.price}</td>
