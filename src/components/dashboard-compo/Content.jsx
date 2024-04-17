@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import 
 { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
  from 'react-icons/bs'
@@ -12,13 +13,15 @@ function Content() {
     <main className='dashboard-main-container'>
         
         {/* <div className='main-cards'> */}
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>Bác sĩ hiện có</h3>
-                    <BsPeopleFill className='card_icon'/>
+            {/* <Link to="/hospital-manage/doctor" style={{ textDecoration: 'none', color: 'inherit' }}> */}
+                <div className='card'>
+                    <div className='card-inner'>
+                        <h3>Bác sĩ hiện có</h3>
+                        <BsPeopleFill className='card_icon'/>
+                    </div>
+                    <h1>300</h1>
                 </div>
-                <h1>300</h1>
-            </div>
+            {/* </Link> */}
             <div className='card'>
                 <div className='card-inner'>
                     <h3>Y tá hiện có</h3>

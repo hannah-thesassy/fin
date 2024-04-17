@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'antd';
 import AddDoctorForm from './AddDoctorForm';
 
@@ -22,23 +22,45 @@ const initialDoctors = [
 
 const DoctorGrid = () => {
   const [searchVal, setSearchVal] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const [doctors, setDoctors] = useState(initialDoctors);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  function handleSearchClick() {
-    if (searchVal === "") {
-      setDoctors(initialDoctors);
-      return;
-    }
-    const filterBySearch = initialDoctors.filter((doctor) => {
-      if (doctor.name.toLowerCase().includes(searchVal.toLowerCase())) {
-        return doctor;
-      }
-    });
-    setDoctors(filterBySearch);
-  }
+    // const [query, setQuery] = useState('');
+    // const [filteredItems, setFilteredItems] = useState([]);
+
+ 
+    // useEffect(() => {
+    //     const filtered = initialDoctors.filter(item =>
+    //         item.name.toLowerCase().includes(query.toLowerCase())
+    //     );
+    //     setFilteredItems(filtered);
+    // }, [query]);
+
+  const handleChange = event => {
+    setSearchVal(event.target.value);
+  };
+  useEffect(() => {
+    const results = initialDoctors.filter(doctor =>
+      doctor.name.toLowerCase().includes(searchVal.toLowerCase()));
+      setSearchResults(results);
+      setDoctors(results); // tự thêm
+  }, [searchVal]);
+
+  // function handleSearchClick() {
+  //   if (searchVal === "") {
+  //     setDoctors(initialDoctors);
+  //     return;
+  //   }
+  //   const filterBySearch = initialDoctors.filter((doctor) => {
+  //     if (doctor.name.toLowerCase().includes(searchVal.toLowerCase())) {
+  //       return doctor;
+  //     }
+  //   });
+  //   setDoctors(filterBySearch);
+  // }
 
   const showModal = () => {
     setVisible(true);
@@ -98,7 +120,11 @@ const DoctorGrid = () => {
                 className="search-input"
                 type="text"
                 placeholder="Tìm kiếm bác sĩ..."
-                onChange={e => { setSearchVal(e.target.value); handleSearchClick(); }}
+                // value={query}
+                // onChange={(e) => setQuery(e.target.value)}
+                value={searchVal}
+                onChange={handleChange}
+                // onChange={e => { setSearchVal(e.target.value); handleSearchClick(); }}
                 // value={searchTerm}
                 // onChange={handleSearch}
                 />
