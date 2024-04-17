@@ -3,7 +3,7 @@ import { Button, Modal } from 'antd';
 import AddDoctorForm from './AddDoctorForm';
 
 // Dữ liệu danh sách các bác sĩ
-const doctors = [
+const initialDoctors = [
   { id: 1, name: 'Bác sĩ A', specialty: 'Nội trú' },
   { id: 2, name: 'Bác sĩ B', specialty: 'Nhi' },
   { id: 3, name: 'Bác sĩ C', specialty: 'Da liễu' },
@@ -22,6 +22,8 @@ const doctors = [
 
 const DoctorGrid = () => {
 
+  const [doctors, setDoctors] = useState(initialDoctors);
+
   const [visible, setVisible] = useState(false);
 
   const showModal = () => {
@@ -39,6 +41,16 @@ const DoctorGrid = () => {
   function handleClick() {
     alert('You clicked me!');
   }
+
+  const handleDelete = (id) => {
+    // Xoá thuốc với id tương ứng khỏi danh sách hiện tại
+    const updatedDoctors = doctors.filter((doctor) => doctor.id !== id);
+    setDoctors(updatedDoctors);
+
+    // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
+    const updatedInitialDoctors = initialDoctors.filter((doctor) => doctor.id !== id);
+    initialDoctors(updatedInitialDoctors);
+  };
 
 
   return (
@@ -78,7 +90,7 @@ const DoctorGrid = () => {
                   <p>Chuyên khoa: {doctor.specialty}</p>
                   <div>
                     <button onClick={handleClick}>Sửa</button>
-                    <button onClick={handleClick}>Xoá</button>
+                    <button onClick={() => handleDelete(doctor.id)}>Xoá</button>
                   </div>
                 </div>
             ))}
