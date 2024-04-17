@@ -108,8 +108,10 @@ const MedicineList = () => {
   }, [searchVal]);
 
 
-  const handleAddMedicine = (newMedicine) => {
-    // Add the new medicine to the array
+  const handleAddMedicine = (medicine) => {
+    // Generate a new ID for the new medicine
+    const newMedicine = { ...medicine};
+    // Add the new medicine to the list of medicines
     setMedicines([...medicines, newMedicine]);
     // Close the modal
     setVisible(false);

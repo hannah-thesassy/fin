@@ -52,34 +52,8 @@ const AddMedicineForm = ({ onAddMedicine }) => {
       onFinish={onFinish}
     >
       <Form.Item
-        label="Tên thuốc"
-        name="Name"
-        rules={[
-          {
-            required: true,
-            message: 'Please input!',
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Loại thuốc"
-        name="Type"
-        rules={[
-          {
-            required: true,
-            message: 'Please input!',
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Giá"
-        name="Price"
+        label="ID"
+        name="id"
         rules={[
           {
             required: true,
@@ -88,6 +62,56 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <InputNumber
+          name="id"
+          style={{
+            width: '100%',
+          }}
+          
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Tên thuốc"
+        name="name"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input 
+          name="name"
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Loại thuốc"
+        name="type"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input 
+          name="type"
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Giá"
+        name="price"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <InputNumber
+          name="price"
           style={{
             width: '100%',
           }}
@@ -96,7 +120,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Số lượng"
-        name="Quantity"
+        name="quantity"
         rules={[
           {
             required: true,
@@ -105,6 +129,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <InputNumber
+          name="quantity"
           style={{
             width: '100%',
           }}
@@ -113,7 +138,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Ngày hết hạn"
-        name="Date"
+        name="expiryDate"
         rules={[
           {
             required: true,
@@ -121,12 +146,14 @@ const AddMedicineForm = ({ onAddMedicine }) => {
           },
         ]}
       >
-        <DatePicker />
+        <DatePicker 
+          name="expiryDate"
+        />
       </Form.Item>
 
       <Form.Item
         label="Nhà cung cấp"
-        name="Distributor"
+        name="supplier"
         rules={[
           {
             required: true,
@@ -134,7 +161,9 @@ const AddMedicineForm = ({ onAddMedicine }) => {
           },
         ]}
       >
-        <Input />
+        <Input 
+          name="supplier"
+        />
       </Form.Item>
       
   {/* 
