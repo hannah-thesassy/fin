@@ -4,7 +4,7 @@ import AddDoctorForm from './AddDoctorForm';
 
 // Dữ liệu danh sách các bác sĩ
 const initialDoctors = [
-  { id: 1, name: 'Bác sĩ A', specialty: 'Nội trú' },
+  { id: 1, name: 'Ngọc Hân', specialty: 'Nội trú' },
   { id: 2, name: 'Bác sĩ B', specialty: 'Nhi' },
   { id: 3, name: 'Bác sĩ C', specialty: 'Da liễu' },
   { id: 4, name: 'Bác sĩ D', specialty: 'Phẫu thuật' },
@@ -15,17 +15,30 @@ const initialDoctors = [
   { id: 9, name: 'Bác sĩ A', specialty: 'Nội trú' },
   { id: 10, name: 'Bác sĩ B', specialty: 'Nhi' },
   { id: 11, name: 'Bác sĩ C', specialty: 'Da liễu' },
-  { id: 12, name: 'Bác sĩ D', specialty: 'Phẫu thuật' },
+  { id: 12, name: 'Hoàng Lâm', specialty: 'Phẫu thuật' },
   // Thêm các bác sĩ khác nếu cần
 ];
 
 
 const DoctorGrid = () => {
-
+  const [searchVal, setSearchVal] = useState("");
   const [doctors, setDoctors] = useState(initialDoctors);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
+
+  function handleSearchClick() {
+    if (searchVal === "") {
+      // setDoctors(initialDoctors);
+      return;
+    }
+    const filterBySearch = initialDoctors.filter((doctor) => {
+      if (doctor.name.toLowerCase().includes(searchVal.toLowerCase())) {
+        return doctor;
+      }
+    });
+    setDoctors(filterBySearch);
+  }
 
   const showModal = () => {
     setVisible(true);
@@ -85,6 +98,7 @@ const DoctorGrid = () => {
                 className="search-input"
                 type="text"
                 placeholder="Tìm kiếm bác sĩ..."
+                onChange={e => { setSearchVal(e.target.value); handleSearchClick(); }}
                 // value={searchTerm}
                 // onChange={handleSearch}
                 />
