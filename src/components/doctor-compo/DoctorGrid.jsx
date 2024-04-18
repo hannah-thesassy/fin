@@ -93,13 +93,16 @@ const DoctorGrid = () => {
   }
 
   const handleDelete = (id) => {
-    // Xoá thuốc với id tương ứng khỏi danh sách hiện tại
-    const updatedDoctors = doctors.filter((doctor) => doctor.id !== id);
-    setDoctors(updatedDoctors);
+    const confirmed = window.confirm(`Bạn có chắc chắn muốn xóa không?`);
+    if (confirmed) {
+      // Xoá thuốc với id tương ứng khỏi danh sách hiện tại
+      const updatedDoctors = doctors.filter((doctor) => doctor.id !== id);
+      setDoctors(updatedDoctors);
 
-    // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
-    // const updatedInitialDoctors = initialDoctors.filter((doctor) => doctor.id !== id);
-    // initialDoctors(updatedInitialDoctors);
+      // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
+      // const updatedInitialDoctors = initialDoctors.filter((doctor) => doctor.id !== id);
+      // initialDoctors(updatedInitialDoctors);
+    }
   };
 
 

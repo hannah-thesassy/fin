@@ -156,13 +156,16 @@ const MedicineList = () => {
   }
 
   const handleDelete = (id) => {
-    // Xoá thuốc với id tương ứng khỏi danh sách hiện tại
-    const updatedMedicines = medicines.filter((medicine) => medicine.id !== id);
-    setMedicines(updatedMedicines);
+    const confirmed = window.confirm(`Bạn có chắc chắn muốn xóa không?`);
+    if (confirmed) {
+      // Xoá thuốc với id tương ứng khỏi danh sách hiện tại
+      const updatedMedicines = medicines.filter((medicine) => medicine.id !== id);
+      setMedicines(updatedMedicines);
 
-    // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
-    // const updatedInitialMedicines = initialMedicines.filter((medicine) => medicine.id !== id);
-    // initialMedicines(updatedInitialMedicines);
+      // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
+      // const updatedInitialMedicines = initialMedicines.filter((medicine) => medicine.id !== id);
+      // initialMedicines(updatedInitialMedicines);
+    }
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
