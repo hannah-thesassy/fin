@@ -33,14 +33,20 @@ const formItemLayout = {
 
 const AddMedicineForm = ({ onAddMedicine }) => {
   const [form] = Form.useForm();
+  // const newname = Form.useWatch("id", form);
+  // console.log(newname);
 
   const onFinish = (values) => {
+    console.log(values);
     // Call the onAddMedicine function with the form values
     onAddMedicine(values);
     // Reset form fields by setting form values to an empty object
     form.resetFields();
   };
 
+// const onFinish = (values) => {
+//       console.log(values);
+// }
   return (
     <Form 
       {...formItemLayout}
@@ -62,7 +68,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <InputNumber
-          name="id"
+          // name="id"
           style={{
             width: '100%',
           }}
@@ -81,13 +87,13 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <Input 
-          name="name"
+          // name="name"
         />
       </Form.Item>
 
       <Form.Item
         label="Loại thuốc"
-        name="type"
+        name={"medType"}
         rules={[
           {
             required: true,
@@ -96,13 +102,13 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <Input 
-          name="type"
+          // name="medType"
         />
       </Form.Item>
 
       <Form.Item
         label="Giá"
-        name="price"
+        name={"price"}
         rules={[
           {
             required: true,
@@ -111,7 +117,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <InputNumber
-          name="price"
+          // name="price"
           style={{
             width: '100%',
           }}
@@ -120,7 +126,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Số lượng"
-        name="quantity"
+        name={"quantity"}
         rules={[
           {
             required: true,
@@ -129,7 +135,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <InputNumber
-          name="quantity"
+          // name="quantity"
           style={{
             width: '100%',
           }}
@@ -138,7 +144,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Ngày hết hạn"
-        name="expiryDate"
+        name={"expiryDate"}
         rules={[
           {
             required: true,
@@ -147,13 +153,14 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <DatePicker 
-          name="expiryDate"
+          // name="expiryDate"
+          format="YYYY-MM-DD"
         />
       </Form.Item>
 
       <Form.Item
         label="Nhà cung cấp"
-        name="supplier"
+        name={"supplier"}
         rules={[
           {
             required: true,
@@ -162,7 +169,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         ]}
       >
         <Input 
-          name="supplier"
+          // name="supplier"
         />
       </Form.Item>
       
@@ -254,7 +261,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
         }}
       >
         <Button type="primary" htmlType="submit"
-          onClick={onFinish}
+          // onFinish={onFinish}
           // onClick={() => form.resetFields({})}
         >
           Lưu

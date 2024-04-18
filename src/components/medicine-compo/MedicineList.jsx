@@ -7,7 +7,7 @@ const initialMedicines = [
   {
     id: 1,
     name: 'Paracetamol',
-    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    medType: 'Thuốc hoạt động trên hệ thống thần kinh',
     price: 5000,
     quantity: 50,
     expiryDate: '2025-12-31',
@@ -16,7 +16,7 @@ const initialMedicines = [
   {
     id: 2,
     name: 'Amoxicillin',
-    type: 'Thuốc kháng sinh',
+    medType: 'Thuốc kháng sinh',
     price: 10000,
     quantity: 30,
     expiryDate: '2027-06-30',
@@ -25,7 +25,7 @@ const initialMedicines = [
   {
     id: 3,
     name: 'Aspirin',
-    type: 'Thuốc chống viêm',
+    medType: 'Thuốc chống viêm',
     price: 7000,
     quantity: 20,
     expiryDate: '2026-08-15',
@@ -34,7 +34,7 @@ const initialMedicines = [
   {
     id: 4,
     name: 'Paracetamol',
-    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    medType: 'Thuốc hoạt động trên hệ thống thần kinh',
     price: 5000,
     quantity: 50,
     expiryDate: '2024-12-31',
@@ -43,7 +43,7 @@ const initialMedicines = [
   {
     id: 5,
     name: 'Amoxicillin',
-    type: 'Thuốc kháng sinh',
+    medType: 'Thuốc kháng sinh',
     price: 10000,
     quantity: 30,
     expiryDate: '2028-06-30',
@@ -52,7 +52,7 @@ const initialMedicines = [
   {
     id: 6,
     name: 'Aspirin',
-    type: 'Thuốc chống viêm',
+    medType: 'Thuốc chống viêm',
     price: 7000,
     quantity: 20,
     expiryDate: '2025-08-15',
@@ -61,7 +61,7 @@ const initialMedicines = [
   {
     id: 7,
     name: 'Paracetamol',
-    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    medType: 'Thuốc hoạt động trên hệ thống thần kinh',
     price: 5000,
     quantity: 50,
     expiryDate: '2026-12-31',
@@ -70,7 +70,7 @@ const initialMedicines = [
   {
     id: 8,
     name: 'Amoxicillin',
-    type: 'Thuốc kháng sinh',
+    medType: 'Thuốc kháng sinh',
     price: 10000,
     quantity: 30,
     expiryDate: '2027-06-30',
@@ -79,7 +79,7 @@ const initialMedicines = [
   {
     id: 9,
     name: 'Aspirin',
-    type: 'Thuốc chống viêm',
+    medType: 'Thuốc chống viêm',
     price: 7000,
     quantity: 20,
     expiryDate: '2027-08-15',
@@ -108,13 +108,22 @@ const MedicineList = () => {
   }, [searchVal]);
 
 
-  const handleAddMedicine = (medicine) => {
+  const handleAddMedicine = (values) => {
     // Generate a new ID for the new medicine
-    const newMedicine = { ...medicine};
+    const newMedicine = { 
+      id: values.id,
+      name: values.name,
+      medType: values.medType,
+      price: values.price,
+      quantity: values.quantity,
+      expiryDate: values["expiryDate"].format("YYYY-MM-DD"),
+      supplier: values.supplier
+    };
     // Add the new medicine to the list of medicines
     setMedicines([...medicines, newMedicine]);
     // Close the modal
     setVisible(false);
+    // {renderMedicineRows}
   };
 
   // function handleSearchClick() {
@@ -152,8 +161,8 @@ const MedicineList = () => {
     setMedicines(updatedMedicines);
 
     // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
-    const updatedInitialMedicines = initialMedicines.filter((medicine) => medicine.id !== id);
-    initialMedicines(updatedInitialMedicines);
+    // const updatedInitialMedicines = initialMedicines.filter((medicine) => medicine.id !== id);
+    // initialMedicines(updatedInitialMedicines);
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -163,7 +172,7 @@ const MedicineList = () => {
   const renderMedicineRows = currentItems.map((medicine, id) => (
     <tr key={medicine.id}>
       <td>{medicine.name}</td>
-      <td>{medicine.type}</td>
+      <td>{medicine.medType}</td>
       <td>{medicine.price}</td>
       <td>{medicine.quantity}</td>
       <td>{medicine.expiryDate}</td>
@@ -194,7 +203,8 @@ const MedicineList = () => {
             // onChange={e => { setSearchVal(e.target.value); handleSearchClick(); }}
           />
         </div>
-        <Button className="add-button" type="primary" onClick={showModal}>
+        <Button className="add-button" type="primary" 
+          onClick={showModal}>
           Thêm thuốc
         </Button>
         <Modal

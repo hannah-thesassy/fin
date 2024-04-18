@@ -49,6 +49,20 @@ const DoctorGrid = () => {
       setDoctors(results); // tự thêm
   }, [searchVal]);
 
+
+  const handleAddDoctor = (values) => {
+    // Generate a new ID for the new medicine
+    const newDoctor = { 
+      id: values.id,
+      name: values.name,
+      specialty: values.specialty
+    };
+    // Add the new medicine to the list of medicines
+    setDoctors([...doctors, newDoctor]);
+    // Close the modal
+    setVisible(false);
+  };
+
   // function handleSearchClick() {
   //   if (searchVal === "") {
   //     setDoctors(initialDoctors);
@@ -84,8 +98,8 @@ const DoctorGrid = () => {
     setDoctors(updatedDoctors);
 
     // Xoá thuốc với id tương ứng khỏi danh sách ban đầu
-    const updatedInitialDoctors = initialDoctors.filter((doctor) => doctor.id !== id);
-    initialDoctors(updatedInitialDoctors);
+    // const updatedInitialDoctors = initialDoctors.filter((doctor) => doctor.id !== id);
+    // initialDoctors(updatedInitialDoctors);
   };
 
 
@@ -142,7 +156,7 @@ const DoctorGrid = () => {
               onCancel={handleCancel}
               footer={null} // To hide the default footer buttons
             >
-              <AddDoctorForm />
+              <AddDoctorForm onAddDoctor={handleAddDoctor} />
             </Modal>
         </div>
         <div className="doctor-grid">
