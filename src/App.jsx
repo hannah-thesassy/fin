@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom
 import Header from './components/commons/Header';
 import Sidebar from './components/commons/Sidebar';
 import Dashboard from './pages/Dashboard';
-import Home from './components/dashboard-compo/Content'
+import Content from './components/dashboard-compo/Content'
 import Doctor from './pages/Doctor';
 // import Doctor from './pages/Doctor';
 // import NursePage from './NursePage';
