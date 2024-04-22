@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'antd';
 import AddMedicineForm from './AddMedicineForm';
+import EditMedicineForm from './EditMedicineForm';
 
 // Khai báo danh sách thuốc
 const initialMedicines = [
@@ -95,6 +96,10 @@ const MedicineList = () => {
   const [medicines, setMedicines] = useState(initialMedicines);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [editMode, setEditMode] = useState(false);
+  const [selectedMedicine, setSelectedMedicine] = useState(null);
+
   const itemsPerPage = 6;
 
   const handleChange = event => {
@@ -126,6 +131,8 @@ const MedicineList = () => {
     // {renderMedicineRows}
   };
 
+  
+
   // function handleSearchClick() {
   //   if (searchVal === "") {
   //     setMedicines(initialMedicines);
@@ -144,6 +151,7 @@ const MedicineList = () => {
   };
 
   const handleOk = () => {
+    console.log("handle ok");
     setVisible(false);
   };
 
@@ -168,6 +176,37 @@ const MedicineList = () => {
     }
   };
 
+  const handleEdit = (medicine) => {
+    setSelectedMedicine(medicine);
+    setEditMode(true);
+  };
+  const handleUpdateMedicine = (updatedMedicine) => {
+    const updatedMedicines = medicines.map((medicine) =>
+      medicine.id === updatedMedicine.id ? updatedMedicine : medicine
+    );
+    setMedicines(updatedMedicines);
+    setEditMode(false);
+    setSelectedMedicine(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditMode(false);
+    setSelectedMedicine(null);
+    handleOk();
+    handleCancel();
+  };
+
+  const handleSave = (editedMedicine) => {
+    console.log("kayy00");
+    const updatedMedicines = medicines.map(medicine =>
+      medicine.id === editedMedicine.id ? editedMedicine : medicine
+    );
+    setMedicines(updatedMedicines);
+    setVisible(false);
+    handleOk();
+    handleCancel();
+  };
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = medicines.slice(indexOfFirstItem, indexOfLastItem);
@@ -181,7 +220,8 @@ const MedicineList = () => {
       <td>{medicine.expiryDate}</td>
       <td>{medicine.supplier}</td>
       <td>
-        <button onClick={handleClick}>Sửa</button>
+        <button onClick={() => handleEdit(medicine)}>Sửa</button>
+        {/* <button onClick={handleClick}>Sửa</button> */}
         <button onClick={() => handleDelete(medicine.id)}>Xoá</button>
       </td>
     </tr>
@@ -219,6 +259,24 @@ const MedicineList = () => {
         >
           <AddMedicineForm onAddMedicine={handleAddMedicine} />
         </Modal>
+
+        {editMode && selectedMedicine && (
+          <Modal
+            title="Edit Medicine"
+            open={editMode}
+            onCancel={handleCancelEdit}
+            footer={null}
+            onSave={handleSave}
+          >
+            <EditMedicineForm
+              medicine={selectedMedicine}
+              onUpdateMedicine={handleUpdateMedicine}
+              onSave={handleSave}
+              onCancel={() => setVisible(false)} 
+            />
+          </Modal>
+        )}
+        
       </div>
 
       <table className="medicine-table">
