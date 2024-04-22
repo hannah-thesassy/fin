@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'antd';
 import AddDoctorForm from './AddDoctorForm';
+import EditDoctorForm from './EditDoctorForm';
 
 // Dữ liệu danh sách các bác sĩ
 const initialDoctors = [
@@ -26,6 +27,10 @@ const DoctorGrid = () => {
   const [doctors, setDoctors] = useState(initialDoctors);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [editMode, setEditMode] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
   const itemsPerPage = 9;
 
     // const [query, setQuery] = useState('');
@@ -105,6 +110,37 @@ const DoctorGrid = () => {
     }
   };
 
+  const handleEdit = (doctor) => {
+    setSelectedDoctor(doctor);
+    setEditMode(true);
+  };
+  const handleUpdateDoctor = (updatedDoctor) => {
+    const updatedDoctors = doctors.map((doctor) =>
+      doctor.id === updatedDoctor.id ? updatedDoctor : doctor
+    );
+    setDoctors(updatedDoctors);
+    setEditMode(false);
+    setSelectedDoctor(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditMode(false);
+    setSelectedDoctor(null);
+    handleOk();
+    handleCancel();
+  };
+
+  const handleSave = (editedDoctor) => {
+    // console.log("kayy00");
+    const updatedDoctors = doctors.map(doctor =>
+      doctor.id === editedDoctor.id ? editedDoctor : doctor
+    );
+    setDoctors(updatedDoctors);
+    setVisible(false);
+    handleOk();
+    handleCancel();
+  };
+
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -115,7 +151,8 @@ const DoctorGrid = () => {
         <h2>{doctor.name}</h2>
         <p>Chuyên khoa: {doctor.specialty}</p>
         <div>
-          <button onClick={handleClick}>Sửa</button>
+          <button onClick={() => handleEdit(doctor)}>Sửa</button>
+          {/* <button onClick={handleClick}>Sửa</button> */}
           <button onClick={() => handleDelete(doctor.id)}>Xoá</button>
         </div>
       </div>
@@ -161,6 +198,24 @@ const DoctorGrid = () => {
             >
               <AddDoctorForm onAddDoctor={handleAddDoctor} />
             </Modal>
+
+            {editMode && selectedDoctor && (
+              <Modal
+                title="Edit Doctor"
+                open={editMode}
+                onCancel={handleCancelEdit}
+                footer={null}
+                onSave={handleSave}
+              >
+                <EditDoctorForm
+                  doctor={selectedDoctor}
+                  onUpdateDoctor={handleUpdateDoctor}
+                  onSave={handleSave}
+                  onCancel={() => setVisible(false)} 
+                />
+              </Modal>
+            )}
+
         </div>
         <div className="doctor-grid">
           {/* <div> */}

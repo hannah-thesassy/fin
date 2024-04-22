@@ -151,7 +151,7 @@ const MedicineList = () => {
   };
 
   const handleOk = () => {
-    console.log("handle ok");
+    // console.log("handle ok");
     setVisible(false);
   };
 
@@ -197,7 +197,7 @@ const MedicineList = () => {
   };
 
   const handleSave = (editedMedicine) => {
-    console.log("kayy00");
+    // console.log("kayy00");
     const updatedMedicines = medicines.map(medicine =>
       medicine.id === editedMedicine.id ? editedMedicine : medicine
     );
