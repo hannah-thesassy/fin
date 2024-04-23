@@ -203,6 +203,7 @@ const MedicineList = () => {
     );
     setMedicines(updatedMedicines);
     setVisible(false);
+    setEditMode(false); // important update
     handleOk();
     handleCancel();
   };

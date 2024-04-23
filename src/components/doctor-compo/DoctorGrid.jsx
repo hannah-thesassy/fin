@@ -137,6 +137,7 @@ const DoctorGrid = () => {
     );
     setDoctors(updatedDoctors);
     setVisible(false);
+    setEditMode(false); // important update
     handleOk();
     handleCancel();
   };
@@ -202,14 +203,14 @@ const DoctorGrid = () => {
             {editMode && selectedDoctor && (
               <Modal
                 title="Edit Doctor"
-                open={editMode}
+                visible={editMode}
                 onCancel={handleCancelEdit}
                 footer={null}
-                onSave={handleSave}
+                // onSave={handleSave}
               >
                 <EditDoctorForm
                   doctor={selectedDoctor}
-                  onUpdateDoctor={handleUpdateDoctor}
+                  // onUpdateDoctor={handleUpdateDoctor}
                   onSave={handleSave}
                   onCancel={() => setVisible(false)} 
                 />
