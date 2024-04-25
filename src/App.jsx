@@ -10,7 +10,7 @@ import Doctor from './pages/Doctor';
 // import Doctor from './pages/Doctor';
 // import NursePage from './NursePage';
 import Medicine from './pages/Medicine';
-// import PatientPage from './PatientPage';
+import Patient from './pages/Patient';
 
 function App() {
   return (
@@ -45,6 +45,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="/hospital-manage/doctor" index element={<Doctor />}/>
           <Route path="/hospital-manage/medicine" index element={<Medicine />}/>
+          <Route path="/hospital-manage/patient" index element={<Patient />}/>
         </Route>
       </Routes>
     </Router>

@@ -8,83 +8,92 @@ const initialMedicines = [
   {
     id: 1,
     name: 'Paracetamol',
-    medType: 'Thuốc hoạt động trên hệ thống thần kinh',
-    price: 5000,
-    quantity: 50,
-    expiryDate: '2025-12-31',
+    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    unitPrice: 5000,
+    quantityInStock: 50,
+    expirationDate: '2025-12-31',
     supplier: 'Nhà thuốc XYZ',
+    note: 'Không',
   },
   {
     id: 2,
     name: 'Amoxicillin',
-    medType: 'Thuốc kháng sinh',
-    price: 10000,
-    quantity: 30,
-    expiryDate: '2027-06-30',
+    type: 'Thuốc kháng sinh',
+    unitPrice: 10000,
+    quantityInStock: 30,
+    expirationDate: '2027-06-30',
     supplier: 'Nhà thuốc ABC',
+    note: 'Không',
   },
   {
     id: 3,
     name: 'Aspirin',
-    medType: 'Thuốc chống viêm',
-    price: 7000,
-    quantity: 20,
-    expiryDate: '2026-08-15',
+    type: 'Thuốc chống viêm',
+    unitPrice: 7000,
+    quantityInStock: 20,
+    expirationDate: '2026-08-15',
     supplier: 'Nhà thuốc DEF',
+    note: 'Không',
   },
   {
     id: 4,
     name: 'Paracetamol',
-    medType: 'Thuốc hoạt động trên hệ thống thần kinh',
-    price: 5000,
-    quantity: 50,
-    expiryDate: '2024-12-31',
+    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    unitPrice: 5000,
+    quantityInStock: 50,
+    expirationDate: '2024-12-31',
     supplier: 'Nhà thuốc XYZ',
+    note: 'Không',
   },
   {
     id: 5,
     name: 'Amoxicillin',
-    medType: 'Thuốc kháng sinh',
-    price: 10000,
-    quantity: 30,
-    expiryDate: '2028-06-30',
+    type: 'Thuốc kháng sinh',
+    unitPrice: 10000,
+    quantityInStock: 30,
+    expirationDate: '2028-06-30',
     supplier: 'Nhà thuốc ABC',
+    note: 'Không',
   },
   {
     id: 6,
     name: 'Aspirin',
-    medType: 'Thuốc chống viêm',
-    price: 7000,
-    quantity: 20,
-    expiryDate: '2025-08-15',
+    type: 'Thuốc chống viêm',
+    unitPrice: 7000,
+    quantityInStock: 20,
+    expirationDate: '2025-08-15',
     supplier: 'Nhà thuốc DEF',
+    note: 'Không',
   },
   {
     id: 7,
     name: 'Paracetamol',
-    medType: 'Thuốc hoạt động trên hệ thống thần kinh',
-    price: 5000,
-    quantity: 50,
-    expiryDate: '2026-12-31',
+    type: 'Thuốc hoạt động trên hệ thống thần kinh',
+    unitPrice: 5000,
+    quantityInStock: 50,
+    expirationDate: '2026-12-31',
     supplier: 'Nhà thuốc XYZ',
+    note: 'Không',
   },
   {
     id: 8,
     name: 'Amoxicillin',
-    medType: 'Thuốc kháng sinh',
-    price: 10000,
-    quantity: 30,
-    expiryDate: '2027-06-30',
+    type: 'Thuốc kháng sinh',
+    unitPrice: 10000,
+    quantityInStock: 30,
+    expirationDate: '2027-06-30',
     supplier: 'Nhà thuốc ABC',
+    note: 'Không',
   },
   {
     id: 9,
     name: 'Aspirin',
-    medType: 'Thuốc chống viêm',
-    price: 7000,
-    quantity: 20,
-    expiryDate: '2027-08-15',
+    type: 'Thuốc chống viêm',
+    unitPrice: 7000,
+    quantityInStock: 20,
+    expirationDate: '2027-08-15',
     supplier: 'Nhà thuốc DEF',
+    note: 'Không',
   },
   // Thêm các thuốc khác vào đây
 ];
@@ -118,11 +127,12 @@ const MedicineList = () => {
     const newMedicine = { 
       id: values.id,
       name: values.name,
-      medType: values.medType,
-      price: values.price,
-      quantity: values.quantity,
-      expiryDate: values["expiryDate"].format("YYYY-MM-DD"),
-      supplier: values.supplier
+      type: values.type,
+      unitPrice: values.unitPrice,
+      quantityInStock: values.quantityInStock,
+      expirationDate: values["expirationDate"].format("YYYY-MM-DD"),
+      supplier: values.supplier,
+      note: values.note,
     };
     // Add the new medicine to the list of medicines
     setMedicines([...medicines, newMedicine]);
@@ -215,11 +225,12 @@ const MedicineList = () => {
   const renderMedicineRows = currentItems.map((medicine, id) => (
     <tr key={medicine.id}>
       <td>{medicine.name}</td>
-      <td>{medicine.medType}</td>
-      <td>{medicine.price}</td>
-      <td>{medicine.quantity}</td>
-      <td>{medicine.expiryDate}</td>
+      <td>{medicine.type}</td>
+      <td>{medicine.unitPrice}</td>
+      <td>{medicine.quantityInStock}</td>
+      <td>{medicine.expirationDate}</td>
       <td>{medicine.supplier}</td>
+      <td>{medicine.note}</td>
       <td>
         <button onClick={() => handleEdit(medicine)}>Sửa</button>
         {/* <button onClick={handleClick}>Sửa</button> */}
@@ -252,7 +263,7 @@ const MedicineList = () => {
           Thêm thuốc
         </Button>
         <Modal
-          title="Add Medicine"
+          title="Thêm Thuốc mới"
           visible={visible}
           onOk={handleOk}
           onCancel={handleCancel}
@@ -263,7 +274,7 @@ const MedicineList = () => {
 
         {editMode && selectedMedicine && (
           <Modal
-            title="Edit Medicine"
+            title="Chỉnh sửa thông tin Thuốc"
             open={editMode}
             onCancel={handleCancelEdit}
             footer={null}
@@ -289,6 +300,7 @@ const MedicineList = () => {
             <th>Số lượng</th>
             <th>Ngày hết hạn</th>
             <th>Nhà cung cấp</th>
+            <th>Ghi chú</th>
             <th>Hành động</th>
           </tr>
         </thead>

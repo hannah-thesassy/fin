@@ -5,18 +5,102 @@ import EditDoctorForm from './EditDoctorForm';
 
 // Dữ liệu danh sách các bác sĩ
 const initialDoctors = [
-  { id: 1, name: 'Bác sĩ 1', specialty: 'Nội trú' },
-  { id: 2, name: 'Bác sĩ B', specialty: 'Nhi' },
-  { id: 3, name: 'Bác sĩ C', specialty: 'Da liễu' },
-  { id: 4, name: 'Bác sĩ D', specialty: 'Phẫu thuật' },
-  { id: 5, name: 'Bác sĩ A', specialty: 'Nội trú' },
-  { id: 6, name: 'Bác sĩ B', specialty: 'Nhi' },
-  { id: 7, name: 'Bác sĩ C', specialty: 'Da liễu' },
-  { id: 8, name: 'Bác sĩ D', specialty: 'Phẫu thuật' },
-  { id: 9, name: 'Bác sĩ A', specialty: 'Nội trú' },
-  { id: 10, name: 'Bác sĩ B', specialty: 'Nhi' },
-  { id: 11, name: 'Bác sĩ C', specialty: 'Da liễu' },
-  { id: 12, name: 'Bác sĩ 2', specialty: 'Phẫu thuật' },
+  { 
+    id: 1, 
+    name: 'Bác sĩ 1', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Nhi',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 2, 
+    name: 'Bác sĩ B', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Nhi',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 3, 
+    name: 'Bác sĩ C', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Da liễu',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 4, 
+    name: 'Bác sĩ D', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Phẫu thuật',
+    available: true,
+    time_off: '5PM',
+},
+  { 
+    id: 5, 
+    name: 'Bác sĩ A', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Nội trú',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 6, 
+    name: 'Bác sĩ B', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Nhi',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 7, 
+    name: 'Bác sĩ C', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Da liễu',
+    available: true,
+    time_off: '5PM',
+},
+  { 
+    id: 8, 
+    name: 'Bác sĩ D', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Phẫu thuật',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 9, 
+    name: 'Bác sĩ A', 
+    department: 'Tai, mũi, họng',
+    qualifications: 'Nội trú',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 10,
+    name: 'Bác sĩ B',
+    department: 'Tai, mũi, họng',
+    qualifications: 'Nhi',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 11,
+    name: 'Bác sĩ C',
+    department: 'Tai, mũi, họng',
+    qualifications: 'Da liễu',
+    available: true,
+    time_off: '5PM',
+  },
+  { 
+    id: 12,
+    name: 'Bác sĩ 2',
+    department: 'Tai, mũi, họng',
+    qualifications: 'Phẫu thuật',
+    available: true,
+    time_off: '5PM',
+  },
   // Thêm các bác sĩ khác nếu cần
 ];
 
@@ -60,7 +144,7 @@ const DoctorGrid = () => {
     const newDoctor = { 
       id: values.id,
       name: values.name,
-      specialty: values.specialty
+      qualifications: values.qualifications,
     };
     // Add the new medicine to the list of medicines
     setDoctors([...doctors, newDoctor]);
@@ -150,7 +234,7 @@ const DoctorGrid = () => {
   const renderDoctorRows = currentItems.map((doctor, id) => (
       <div key={doctor.id} className="doctor-card">
         <h2>{doctor.name}</h2>
-        <p>Chuyên khoa: {doctor.specialty}</p>
+        <p>Chuyên khoa: {doctor.qualifications}</p>
         <div>
           <button onClick={() => handleEdit(doctor)}>Sửa</button>
           {/* <button onClick={handleClick}>Sửa</button> */}
@@ -191,7 +275,7 @@ const DoctorGrid = () => {
             {/* <button 
               onClick={handleClick}>Thêm bác sĩ</button> */}
             <Modal
-              title="Add Doctor"
+              title="Thêm Bác sĩ mới"
               visible={visible}
               onOk={handleOk}
               onCancel={handleCancel}
@@ -202,7 +286,7 @@ const DoctorGrid = () => {
 
             {editMode && selectedDoctor && (
               <Modal
-                title="Edit Doctor"
+                title="Chỉnh sửa thông tin Bác sĩ"
                 visible={editMode}
                 onCancel={handleCancelEdit}
                 footer={null}
@@ -225,7 +309,7 @@ const DoctorGrid = () => {
             {/* {doctors.map(doctor => (
                 <div key={doctor.id} className="doctor-card">
                   <h2>{doctor.name}</h2>
-                  <p>Chuyên khoa: {doctor.specialty}</p>
+                  <p>Chuyên khoa: {doctor.qualifications}</p>
                   <div>
                     <button onClick={handleClick}>Sửa</button>
                     <button onClick={() => handleDelete(doctor.id)}>Xoá</button>

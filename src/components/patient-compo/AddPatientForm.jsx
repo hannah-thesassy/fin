@@ -30,7 +30,7 @@ const formItemLayout = {
     },
   },
 };
-const AddDoctorForm = ({ onAddDoctor}) => {
+const AddPatientForm = ({ onAddPatient}) => {
   const [form] = Form.useForm();
   // const newname = Form.useWatch("id", form);
   // console.log(newname);
@@ -38,7 +38,7 @@ const AddDoctorForm = ({ onAddDoctor}) => {
   const onFinish = (values) => {
     console.log(values);
     // Call the onAddMedicine function with the form values
-    onAddDoctor(values);
+    onAddPatient(values);
     // Reset form fields by setting form values to an empty object
     form.resetFields();
   };
@@ -88,8 +88,8 @@ const AddDoctorForm = ({ onAddDoctor}) => {
       </Form.Item>
 
       <Form.Item
-        label="Khoa"
-        name="department"
+        label="Tuổi"
+        name="age"
         rules={[
           {
             required: true,
@@ -97,12 +97,76 @@ const AddDoctorForm = ({ onAddDoctor}) => {
           },
         ]}
       >
-        <Input />
+        <InputNumber
+          style={{
+            width: '100%',
+          }}
+        />
       </Form.Item>
       
       <Form.Item
-        label="Chuyên khoa"
-        name="qualifications"
+        label="Địa chỉ"
+        name="location"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="SĐT"
+        name="phoneNumber"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Giới tính"
+        name="sex"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Số CCCD"
+        name="cccd"
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Nhóm máu"
+        name="bloodType"
         rules={[
           {
             required: true,
@@ -113,26 +177,6 @@ const AddDoctorForm = ({ onAddDoctor}) => {
         <Input />
       </Form.Item>
 
-      <Form.Item
-        label="Hiện diện"
-        name="available"
-        valuePropName="checked"
-      >
-        <Switch />
-      </Form.Item>
-
-      <Form.Item
-        label="Giờ nghỉ"
-        name="time_off"
-        rules={[
-          {
-            required: true,
-            message: 'Please input!',
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
   {/* 
       <Form.Item
         label="DatePicker"
@@ -257,4 +301,4 @@ const AddDoctorForm = ({ onAddDoctor}) => {
     </Form>
   )
 };
-export default AddDoctorForm;
+export default AddPatientForm;

@@ -93,7 +93,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Loại thuốc"
-        name={"medType"}
+        name={"type"}
         rules={[
           {
             required: true,
@@ -108,7 +108,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Giá"
-        name={"price"}
+        name={"unitPrice"}
         rules={[
           {
             required: true,
@@ -126,7 +126,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Số lượng"
-        name={"quantity"}
+        name={"quantityInStock"}
         rules={[
           {
             required: true,
@@ -144,7 +144,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
 
       <Form.Item
         label="Ngày hết hạn"
-        name={"expiryDate"}
+        name={"expirationDate"}
         rules={[
           {
             required: true,
@@ -170,6 +170,21 @@ const AddMedicineForm = ({ onAddMedicine }) => {
       >
         <Input 
           // name="supplier"
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Ghi chú"
+        name={"note"}
+        rules={[
+          {
+            required: true,
+            message: 'Please input!',
+          },
+        ]}
+      >
+        <Input 
+          // name="medType"
         />
       </Form.Item>
       

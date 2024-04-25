@@ -30,9 +30,11 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
             <li className='sidebar-list-item'>
                 <div>Y tá</div>
             </li>
-            <li className='sidebar-list-item'>
-                <div>Bệnh nhân</div>
-            </li>
+            <Link to="/hospital-manage/patient" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <li className='sidebar-list-item'>
+                    <div>Bệnh nhân</div>
+                </li>
+            </Link>
             <Link to="/hospital-manage/medicine" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
                     <div>Kiểm kê thuốc</div>

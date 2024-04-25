@@ -2,33 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { Button, Switch, Form, Input, InputNumber, DatePicker } from 'antd';
 import dayjs from 'dayjs';
 
-const EditDoctorForm = ({ doctor, onSave }) => {
+const EditPatientForm = ({ patient, onSave }) => {
   const [form] = Form.useForm();
-  const [editedDoctor, setEditedDoctor] = useState(doctor);
+  const [editedPatient, setEditedPatient] = useState(patient);
 
   useEffect(() => {
     form.setFieldsValue({
-        name: editedDoctor.name,
-        department: editedDoctor.department,
-        qualifications: editedDoctor.qualifications, 
-        available: editedDoctor.available,
-        time_off: editedDoctor.time_off,
+        name: editedPatient.name,
+        age: editedPatient.age,
+        location: editedPatient.location,
+        email: editedPatient.email,
+        phoneNumber: editedPatient.phoneNumber,
+        sex: editedPatient.sex,
+        cccd: editedPatient.cccd,
+        bloodType: editedPatient.bloodType,
     //   medType: editedMedicine.medType,
     //   price: editedMedicine.price,
     //   quantity: editedMedicine.quantity,
     //   expiryDate: dayjs(editedMedicine.expiryDate),
     //   supplier: editedMedicine.supplier,
     });
-  }, [editedDoctor]);
+  }, [editedPatient]);
 
   const onFinish = (values) => {
     // Convert expiryDate back to string in the required format
-    const updatedDoctor = {
-      ...editedDoctor,
+    const updatedPatient = {
+      ...editedPatient,
       ...values,
     //   expiryDate: values.expiryDate.format('YYYY-MM-DD'),
     };
-    onSave(updatedDoctor);
+    onSave(updatedPatient);
   };
 
   return (
@@ -42,37 +45,56 @@ const EditDoctorForm = ({ doctor, onSave }) => {
       </Form.Item>
 
       <Form.Item
-        label="Khoa"
-        name="department"
-        rules={[{ required: true, message: 'Please input the type of the medicine!' }]}
+        label="Tuổi"
+        name="age"
+        rules={[{ required: true, message: 'Please input the price of the medicine!' }]}
+      >
+        <InputNumber style={{ width: '100%' }} />
+      </Form.Item>
+
+      <Form.Item
+        label="Địa chỉ"
+        name="location"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="SĐT"
+        name="phoneNumber"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Giới tính"
+        name="sex"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Số CCCD"
+        name="cccd"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Nhóm máu"
+        name="bloodType"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
       >
         <Input />
       </Form.Item>
 
-      <Form.Item
-        label="Chuyên khoa"
-        name="qualifications"
-        rules={[{ required: true, message: 'Please input the type of the medicine!' }]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Hiện diện"
-        name="available"
-        valuePropName="checked"
-        rules={[{ required: true, message: 'Please input the type of the medicine!' }]}
-      >
-        <Switch />
-      </Form.Item>
-
-      <Form.Item
-        label="Giờ nghỉ"
-        name="time_off"
-        rules={[{ required: true, message: 'Please input the type of the medicine!' }]}
-      >
-        <Input />
-      </Form.Item>
 
       {/* <Form.Item
         label="Loại thuốc"
@@ -118,4 +140,4 @@ const EditDoctorForm = ({ doctor, onSave }) => {
   );
 };
 
-export default EditDoctorForm;
+export default EditPatientForm;
