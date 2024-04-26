@@ -42,7 +42,7 @@ function App() {
 
           <Outlet />
         </div>}>
-          <Route index element={<Dashboard />} />
+          <Route path="/hospital-manage/"index element={<Dashboard />} />
           <Route path="/hospital-manage/doctor" index element={<Doctor />}/>
           <Route path="/hospital-manage/medicine" index element={<Medicine />}/>
           <Route path="/hospital-manage/patient" index element={<Patient />}/>
