@@ -14,25 +14,7 @@ import Patient from './pages/Patient';
 
 function App() {
   return (
-    // <Router>
-    //       <Routes>
-    //         <Route
-    //         path='/'
-    //           element={
-    //             <div className='whole-container'>
-
-    //             <Sidebar/>
-    //             <Header/>
-
-    //             <Outlet />
-    //             </div>
-
-    //           }
-
-    //         </Route>
-    //       </Routes>
-    // </Router>
-
+ 
     <Router>
       <Routes>
         <Route path="/hospital-manage" element={<div className='whole-container'>
@@ -42,7 +24,7 @@ function App() {
 
           <Outlet />
         </div>}>
-          <Route path="/hospital-manage/"index element={<Dashboard />} />
+          <Route path="/hospital-manage/dashboard"index element={<Dashboard />} />
           <Route path="/hospital-manage/doctor" index element={<Doctor />}/>
           <Route path="/hospital-manage/medicine" index element={<Medicine />}/>
           <Route path="/hospital-manage/patient" index element={<Patient />}/>

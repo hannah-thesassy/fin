@@ -190,14 +190,14 @@ const MedicineList = () => {
     setSelectedMedicine(medicine);
     setEditMode(true);
   };
-  const handleUpdateMedicine = (updatedMedicine) => {
-    const updatedMedicines = medicines.map((medicine) =>
-      medicine.id === updatedMedicine.id ? updatedMedicine : medicine
-    );
-    setMedicines(updatedMedicines);
-    setEditMode(false);
-    setSelectedMedicine(null);
-  };
+  // const handleUpdateMedicine = (updatedMedicine) => {
+  //   const updatedMedicines = medicines.map((medicine) =>
+  //     medicine.id === updatedMedicine.id ? updatedMedicine : medicine
+  //   );
+  //   setMedicines(updatedMedicines);
+  //   setEditMode(false);
+  //   setSelectedMedicine(null);
+  // };
 
   const handleCancelEdit = () => {
     setEditMode(false);
@@ -232,9 +232,11 @@ const MedicineList = () => {
       <td>{medicine.supplier}</td>
       <td>{medicine.note}</td>
       <td>
-        <button onClick={() => handleEdit(medicine)}>Sửa</button>
+        <button className='edit-btn'
+          onClick={() => handleEdit(medicine)}>Sửa</button>
         {/* <button onClick={handleClick}>Sửa</button> */}
-        <button onClick={() => handleDelete(medicine.id)}>Xoá</button>
+        <button className='delete-btn'
+          onClick={() => handleDelete(medicine.id)}>Xoá</button>
       </td>
     </tr>
   ));
@@ -282,7 +284,7 @@ const MedicineList = () => {
           >
             <EditMedicineForm
               medicine={selectedMedicine}
-              onUpdateMedicine={handleUpdateMedicine}
+              // onUpdateMedicine={handleUpdateMedicine}
               onSave={handleSave}
               onCancel={() => setVisible(false)} 
             />

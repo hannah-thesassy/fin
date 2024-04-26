@@ -19,10 +19,10 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         <ul className='sidebar-list'>
 
-            <Link to="/hospital-manage/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/hospital-manage/dashboard" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
                     <div 
-                        className={location.pathname === '/hospital-manage/' ? 'active' : ''}>
+                        className={location.pathname === '/hospital-manage/dashboard' ? 'active' : ''}>
                         Trang chủ
                     </div>
                 </li>

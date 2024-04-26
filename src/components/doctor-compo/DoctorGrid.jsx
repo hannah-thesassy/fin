@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'antd';
+import axios from 'axios';
 import AddDoctorForm from './AddDoctorForm';
 import EditDoctorForm from './EditDoctorForm';
 
+// BACKEND GET Infor from DB - initialDoctors (danh sach doctor)
 // Dữ liệu danh sách các bác sĩ
 const initialDoctors = [
   { 
@@ -200,6 +202,8 @@ const DoctorGrid = () => {
     //     setFilteredItems(filtered);
     // }, [query]);
 
+
+    // BACKEND FIND Infor in DB - doctor's name (searchVal)
   const handleChange = event => {
     setSearchVal(event.target.value);
   };
@@ -212,6 +216,8 @@ const DoctorGrid = () => {
 
 
   const handleAddDoctor = (values) => {
+    // BACKEND ADD Infor to DB - new Doctor
+
     // Generate a new ID for the new medicine
     const newDoctor = { 
       id: values.id,
@@ -262,6 +268,8 @@ const DoctorGrid = () => {
     alert('You clicked me!');
   }
 
+
+  // BACKEND DELETE Infor in DB - doctor's ID
   const handleDelete = (id) => {
     const confirmed = window.confirm(`Bạn có chắc chắn muốn xóa không?`);
     if (confirmed) {
@@ -279,14 +287,14 @@ const DoctorGrid = () => {
     setSelectedDoctor(doctor);
     setEditMode(true);
   };
-  const handleUpdateDoctor = (updatedDoctor) => {
-    const updatedDoctors = doctors.map((doctor) =>
-      doctor.id === updatedDoctor.id ? updatedDoctor : doctor
-    );
-    setDoctors(updatedDoctors);
-    setEditMode(false);
-    setSelectedDoctor(null);
-  };
+  // const handleUpdateDoctor = (updatedDoctor) => {
+  //   const updatedDoctors = doctors.map((doctor) =>
+  //     doctor.id === updatedDoctor.id ? updatedDoctor : doctor
+  //   );
+  //   setDoctors(updatedDoctors);
+  //   setEditMode(false);
+  //   setSelectedDoctor(null);
+  // };
 
   const handleCancelEdit = () => {
     setEditMode(false);
@@ -295,6 +303,7 @@ const DoctorGrid = () => {
     handleCancel();
   };
 
+  // BACKEND UPDATE Infor to DB - doctor's ID (editedDoctor)
   const handleSave = (editedDoctor) => {
     // console.log("kayy00");
     const updatedDoctors = doctors.map(doctor =>
@@ -308,6 +317,10 @@ const DoctorGrid = () => {
   };
 
 
+  const handleViewDetail = (doctor) => {
+
+  }
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = doctors.slice(indexOfFirstItem, indexOfLastItem);
@@ -317,9 +330,12 @@ const DoctorGrid = () => {
         <h2>{doctor.name}</h2>
         <p>Chuyên khoa: {doctor.qualifications}</p>
         <div>
-          <button onClick={() => handleEdit(doctor)}>Sửa</button>
+          {/* <button onClick={toggleForm}>Xem</button> */}
+          <button className='edit-btn'
+            onClick={() => handleEdit(doctor)}>Sửa</button>
           {/* <button onClick={handleClick}>Sửa</button> */}
-          <button onClick={() => handleDelete(doctor.id)}>Xoá</button>
+          <button className='delete-btn'
+            onClick={() => handleDelete(doctor.id)}>Xoá</button>
         </div>
       </div>
   ));

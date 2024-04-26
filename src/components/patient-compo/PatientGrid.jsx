@@ -86,7 +86,7 @@ const initialPatients = [
 },
   { 
     id: 8, 
-    name: 'Bệnh nhân A',
+    name: 'Bệnh nhân C',
     birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
@@ -97,7 +97,7 @@ const initialPatients = [
   },
   { 
     id: 9, 
-    name: 'Bệnh nhân A',
+    name: 'Bệnh nhân B',
     birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
@@ -119,7 +119,7 @@ const initialPatients = [
   },
   { 
     id: 11,
-    name: 'Bệnh nhân A',
+    name: 'Bệnh nhân D',
     birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
@@ -243,14 +243,14 @@ const PatientGrid = () => {
     setSelectedPatient(patient);
     setEditMode(true);
   };
-  const handleUpdatePatient = (updatedPatient) => {
-    const updatedPatients = patients.map((patient) =>
-      patient.id === updatedPatient.id ? updatedPatient : patient
-    );
-    setPatients(updatedPatients);
-    setEditMode(false);
-    setSelectedPatient(null);
-  };
+  // const handleUpdatePatient = (updatedPatient) => {
+  //   const updatedPatients = patients.map((patient) =>
+  //     patient.id === updatedPatient.id ? updatedPatient : patient
+  //   );
+  //   setPatients(updatedPatients);
+  //   setEditMode(false);
+  //   setSelectedPatient(null);
+  // };
 
   const handleCancelEdit = () => {
     setEditMode(false);
@@ -281,9 +281,11 @@ const PatientGrid = () => {
         <h2>{patient.name}</h2>
         <p>Năm sinh: {patient.birthday}, Nhóm máu: {patient.bloodType}</p>
         <div>
-          <button onClick={() => handleEdit(patient)}>Sửa</button>
+          <button className='edit-btn'
+            onClick={() => handleEdit(patient)}>Sửa</button>
           {/* <button onClick={handleClick}>Sửa</button> */}
-          <button onClick={() => handleDelete(patient.id)}>Xoá</button>
+          <button className='delete-btn'
+            onClick={() => handleDelete(patient.id)}>Xoá</button>
         </div>
       </div>
   ));

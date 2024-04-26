@@ -19,6 +19,7 @@ function Content() {
                         <h3>Bác sĩ hiện có</h3>
                         <BsPeopleFill className='card_icon'/>
                     </div>
+                    {/* BACKEND GET Infor to DB - number of doctors */}
                     <h1>300</h1>
                 </div>
             {/* </Link> */}
@@ -27,6 +28,7 @@ function Content() {
                     <h3>Y tá hiện có</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
+                {/* BACKEND GET Infor to DB - number of nurses */}
                 <h1>12</h1>
             </div>
             <div className='card'>
@@ -34,6 +36,7 @@ function Content() {
                     <h3>Bệnh nhân</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
+                {/* BACKEND GET Infor to DB - number of patients */}
                 <h1>33</h1>
             </div>
             
