@@ -33,13 +33,13 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div>
                 <label>Tài khoản</label>
-                <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                <input className='login-input' type="text" name="username" value={formData.username} onChange={handleChange} />
                 </div>
                 <div>
                 <label>Mật khẩu</label>
-                <input type="password" name="password" value={formData.password} onChange={handleChange} />
+                <input className='login-input' type="password" name="password" value={formData.password} onChange={handleChange} />
                 </div>
-                <button type="submit">Đăng nhập</button>
+                <button className='login-btn' type="submit">Đăng nhập</button>
             </form>
         </div>
         <img className="img-logo" src='src\assets\Group 2.png'></img>
