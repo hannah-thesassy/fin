@@ -88,8 +88,8 @@ const AddPatientForm = ({ onAddPatient}) => {
       </Form.Item>
 
       <Form.Item
-        label="Tuổi"
-        name="age"
+        label="Năm sinh"
+        name="birthday"
         rules={[
           {
             required: true,

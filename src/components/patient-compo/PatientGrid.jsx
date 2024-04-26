@@ -10,7 +10,7 @@ const initialPatients = [
   { 
     id: 1, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -21,7 +21,7 @@ const initialPatients = [
   { 
     id: 2, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -32,7 +32,7 @@ const initialPatients = [
   { 
     id: 3, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -43,7 +43,7 @@ const initialPatients = [
   { 
     id: 4, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -54,7 +54,7 @@ const initialPatients = [
   { 
     id: 5, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -65,7 +65,7 @@ const initialPatients = [
   { 
     id: 6, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -76,7 +76,7 @@ const initialPatients = [
   { 
     id: 7, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -87,7 +87,7 @@ const initialPatients = [
   { 
     id: 8, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -98,7 +98,7 @@ const initialPatients = [
   { 
     id: 9, 
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -109,7 +109,7 @@ const initialPatients = [
   { 
     id: 10,
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -120,7 +120,7 @@ const initialPatients = [
   { 
     id: 11,
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -131,7 +131,7 @@ const initialPatients = [
   { 
     id: 12,
     name: 'Bệnh nhân A',
-    age: 39,
+    birthday: 1970,
     location: 'TP. HCM',
     email: '@gmail.com',
     phoneNumber: '123',
@@ -182,7 +182,7 @@ const PatientGrid = () => {
     const newPatient = { 
       id: values.id,
       name: values.name,
-      age: values.age,
+      birthday: values.birthday,
       location: values.location,
       email: values.email,
       phoneNumber: values.phoneNumber,
@@ -279,7 +279,7 @@ const PatientGrid = () => {
   const renderPatientRows = currentItems.map((patient, id) => (
       <div key={patient.id} className="doctor-card">
         <h2>{patient.name}</h2>
-        <p>Tuổi: {patient.age}, Nhóm máu: {patient.bloodType}</p>
+        <p>Năm sinh: {patient.birthday}, Nhóm máu: {patient.bloodType}</p>
         <div>
           <button onClick={() => handleEdit(patient)}>Sửa</button>
           {/* <button onClick={handleClick}>Sửa</button> */}

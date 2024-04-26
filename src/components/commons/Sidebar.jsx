@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import 
 {BsHeart, BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
  from 'react-icons/bs'
 
 function Sidebar({openSidebarToggle, OpenSidebar}) {
+    const location = useLocation();
+    
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
@@ -17,14 +19,17 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         <ul className='sidebar-list'>
 
-            <Link to="/hospital-manage/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/hospital-manage" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
-                    <div>Trang chủ</div>
+                    <div 
+                        className={location.pathname === '/hospital-manage' ? 'active' : ''}>
+                        Trang chủ
+                    </div>
                 </li>
             </Link>
             <Link to="/hospital-manage/doctor" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
-                    <div>Bác sĩ</div>
+                    <div className={location.pathname === '/hospital-manage/doctor' ? 'active' : ''}>Bác sĩ</div>
                 </li>
             </Link>
             <li className='sidebar-list-item'>
@@ -32,12 +37,12 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
             </li>
             <Link to="/hospital-manage/patient" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
-                    <div>Bệnh nhân</div>
+                    <div className={location.pathname === '/hospital-manage/patient' ? 'active' : ''}>Bệnh nhân</div>
                 </li>
             </Link>
             <Link to="/hospital-manage/medicine" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <li className='sidebar-list-item'>
-                    <div>Kiểm kê thuốc</div>
+                    <div className={location.pathname === '/hospital-manage/medicine' ? 'active' : ''}>Kiểm kê thuốc</div>
                 </li>
             </Link>
             <li className='sidebar-list-item'>

@@ -35,7 +35,7 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/hospital-manage/" element={<div className='whole-container'>
+        <Route path="/hospital-manage" element={<div className='whole-container'>
 
           <Sidebar />
           <Header />

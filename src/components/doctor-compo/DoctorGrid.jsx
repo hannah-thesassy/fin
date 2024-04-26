@@ -8,6 +8,12 @@ const initialDoctors = [
   { 
     id: 1, 
     name: 'Bác sĩ 1', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Nhi',
     available: true,
@@ -16,6 +22,12 @@ const initialDoctors = [
   { 
     id: 2, 
     name: 'Bác sĩ B', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Nhi',
     available: true,
@@ -24,6 +36,12 @@ const initialDoctors = [
   { 
     id: 3, 
     name: 'Bác sĩ C', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Da liễu',
     available: true,
@@ -32,6 +50,12 @@ const initialDoctors = [
   { 
     id: 4, 
     name: 'Bác sĩ D', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Phẫu thuật',
     available: true,
@@ -40,6 +64,12 @@ const initialDoctors = [
   { 
     id: 5, 
     name: 'Bác sĩ A', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Nội trú',
     available: true,
@@ -48,6 +78,12 @@ const initialDoctors = [
   { 
     id: 6, 
     name: 'Bác sĩ B', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Nhi',
     available: true,
@@ -56,6 +92,12 @@ const initialDoctors = [
   { 
     id: 7, 
     name: 'Bác sĩ C', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Da liễu',
     available: true,
@@ -64,6 +106,12 @@ const initialDoctors = [
   { 
     id: 8, 
     name: 'Bác sĩ D', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Phẫu thuật',
     available: true,
@@ -72,6 +120,12 @@ const initialDoctors = [
   { 
     id: 9, 
     name: 'Bác sĩ A', 
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Nội trú',
     available: true,
@@ -80,6 +134,12 @@ const initialDoctors = [
   { 
     id: 10,
     name: 'Bác sĩ B',
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Nhi',
     available: true,
@@ -88,6 +148,12 @@ const initialDoctors = [
   { 
     id: 11,
     name: 'Bác sĩ C',
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Da liễu',
     available: true,
@@ -96,6 +162,12 @@ const initialDoctors = [
   { 
     id: 12,
     name: 'Bác sĩ 2',
+    birthday: 1970,
+    location: 'TP. HCM',
+    email: '@gmail.com',
+    phoneNumber: '123',
+    sex: 'Nam',
+    cccd: 'số cccd',
     department: 'Tai, mũi, họng',
     qualifications: 'Phẫu thuật',
     available: true,
@@ -144,7 +216,16 @@ const DoctorGrid = () => {
     const newDoctor = { 
       id: values.id,
       name: values.name,
-      qualifications: values.qualifications,
+      birthday: values.birthday,
+      location: values.location,
+      email: values.email,
+      phoneNumber: values.phoneNumber,
+      sex: values.sex,
+      cccd: values.cccd,
+      department: values.department,
+      qualifications: values.qualifications, 
+      available: values.available,
+      time_off: values.time_off,
     };
     // Add the new medicine to the list of medicines
     setDoctors([...doctors, newDoctor]);
@@ -281,7 +362,9 @@ const DoctorGrid = () => {
               onCancel={handleCancel}
               footer={null} // To hide the default footer buttons
             >
-              <AddDoctorForm onAddDoctor={handleAddDoctor} />
+              <AddDoctorForm 
+                // onCancel={}
+                onAddDoctor={handleAddDoctor} />
             </Modal>
 
             {editMode && selectedDoctor && (

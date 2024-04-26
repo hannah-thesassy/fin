@@ -9,6 +9,12 @@ const EditDoctorForm = ({ doctor, onSave }) => {
   useEffect(() => {
     form.setFieldsValue({
         name: editedDoctor.name,
+        birthday: editedDoctor.birthday,
+        location: editedDoctor.location,
+        email: editedDoctor.email,
+        phoneNumber: editedDoctor.phoneNumber,
+        sex: editedDoctor.sex,
+        cccd: editedDoctor.cccd,
         department: editedDoctor.department,
         qualifications: editedDoctor.qualifications, 
         available: editedDoctor.available,
@@ -38,7 +44,59 @@ const EditDoctorForm = ({ doctor, onSave }) => {
         name="name"
         rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
       >
-        <Input />
+        <Input readOnly className="read-only-field"
+          // style={{
+          //   color: "gray",
+          //   cursor: "not-allowed"
+          // }}
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Năm sinh"
+        name="birthday"
+        rules={[{ required: true, message: 'Please input the price of the medicine!' }]}
+      >
+        <InputNumber readOnly className="read-only-field"
+        style={{ width: '100%' }} 
+          
+        />
+      </Form.Item>
+
+      <Form.Item
+        label="Địa chỉ"
+        name="location"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input readOnly className="read-only-field" />
+      </Form.Item>
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input readOnly className="read-only-field" />
+      </Form.Item>
+      <Form.Item
+        label="SĐT"
+        name="phoneNumber"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input readOnly className="read-only-field" />
+      </Form.Item>
+      <Form.Item
+        label="Giới tính"
+        name="sex"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input readOnly className="read-only-field" />
+      </Form.Item>
+      <Form.Item
+        label="Số CCCD"
+        name="cccd"
+        rules={[{ required: true, message: 'Please input the name of the medicine!' }]}
+      >
+        <Input readOnly className="read-only-field" />
       </Form.Item>
 
       <Form.Item
