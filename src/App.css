@@ -48,7 +48,7 @@ body {
   margin: 0 auto;
 }
 
-label {
+.login-label {
   display: block;
   margin-bottom: 5px;
 }

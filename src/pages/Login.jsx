@@ -32,11 +32,11 @@ const Login = () => {
             <h1>Đăng nhập</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                <label>Tài khoản</label>
+                <label className='login-lable' >Tài khoản</label>
                 <input className='login-input' type="text" name="username" value={formData.username} onChange={handleChange} />
                 </div>
                 <div>
-                <label>Mật khẩu</label>
+                <label className='login-lable' >Mật khẩu</label>
                 <input className='login-input' type="password" name="password" value={formData.password} onChange={handleChange} />
                 </div>
                 <button className='login-btn' type="submit">Đăng nhập</button>
