@@ -8,7 +8,7 @@ function PatientInfo({ patient }) {
     // console.log(patient);
     return (
         <div className={cx('patient-info-wrapper')}>
-            <img className={cx('avatar')} src=" src/assets/patient-avt.png" ></img>
+            <img className={cx('avatar')} src={patient.image} ></img>
             <div className={cx('body')}>
                 <h3 className={cx('body-title')}>Thông tin chung</h3>
                 <p className={cx('body-content')}>{patient.genaral_info}</p>
@@ -19,15 +19,15 @@ function PatientInfo({ patient }) {
                     </li>
                     <li className={cx('list-info-item')}>
                         <h4 className={cx('list-info-header')}>Ngày sinh</h4>
-                        <p className={cx('list-info-content')}> patient.birthday </p>
+                        <p className={cx('list-info-content')}> {patient.birthday} </p>
                     </li>
                     <li className={cx('list-info-item')}>
                         <h4 className={cx('list-info-header')}>Nhóm máu</h4>
-                        <p className={cx('list-info-content')}> patient.blood_type </p>
+                        <p className={cx('list-info-content')}> {patient.blood_type} </p>
                     </li>
                     <li className={cx('list-info-item')}>
                         <h4 className={cx('list-info-header')}>Địa chỉ</h4>
-                        <p className={cx('list-info-content')}>patient.address</p>
+                        <p className={cx('list-info-content')}>{patient.address}</p>
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,203 @@
+{
+    "nurses": [
+        {
+            "name": "Nguyễn Văn N",
+            "sex": "male",
+            "qualifications": ["1"],
+            "floor": "3",
+            "room": "306",
+            "time_off": ["2"],
+            "id": "1ab7"
+        },
+        {
+            "id": "5d21",
+            "name": "a",
+            "sex": "female",
+            "qualifications": ["1"],
+            "floor": "4",
+            "room": "404",
+            "time_off": ["3"]
+        },
+        {
+            "id": "e9e0",
+            "name": "aaa",
+            "sex": "female",
+            "qualifications": ["1"],
+            "floor": "5",
+            "room": "507",
+            "time_off": ["2", "3", "4"]
+        },
+        {
+            "id": "d4ab",
+            "name": "Nguyen Quoc Nhut",
+            "sex": "male",
+            "qualifications": ["2"],
+            "floor": "3",
+            "room": "305",
+            "time_off": ["5"]
+        },
+        {
+            "id": "5215",
+            "name": "John Smith",
+            "sex": "male",
+            "qualifications": ["2"],
+            "floor": "5",
+            "room": "508",
+            "time_off": ["7"]
+        },
+        {
+            "id": "9732",
+            "name": "Nam John",
+            "sex": "female",
+            "qualifications": ["1"],
+            "floor": "9",
+            "room": "902",
+            "time_off": ["2", "4"]
+        },
+        {
+            "id": "13b4",
+            "name": "Nguyen Van B",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "3",
+            "room": "304",
+            "time_off": ["4"]
+        },
+        {
+            "id": "741e",
+            "name": "bbbb",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "1",
+            "room": "108",
+            "time_off": ["5", "6"]
+        },
+        {
+            "id": "bafa",
+            "name": "aaa",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "3",
+            "room": "303",
+            "time_off": ["6", "4"]
+        },
+        {
+            "id": "acfa",
+            "name": "aaaa",
+            "sex": "male",
+            "qualifications": ["2"],
+            "floor": "5",
+            "room": "505",
+            "time_off": ["2", "4", "7"]
+        },
+        {
+            "id": "63fd",
+            "name": "cccc",
+            "sex": "male",
+            "qualifications": ["2"],
+            "floor": "7",
+            "room": "706",
+            "time_off": ["3", "4", "6"]
+        },
+        {
+            "id": "de0f",
+            "name": "ddddd",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "7",
+            "room": "706",
+            "time_off": ["3", "6", "8"]
+        },
+        {
+            "id": "0c56",
+            "name": "aaaa",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "7",
+            "room": "704",
+            "time_off": ["2"]
+        },
+        {
+            "id": "a1e8",
+            "name": "wwwwwwww",
+            "sex": "female",
+            "qualifications": ["1", "2"],
+            "floor": "4",
+            "room": "404",
+            "time_off": ["2", "6"]
+        },
+        {
+            "id": "336d",
+            "name": "qqq",
+            "sex": "male",
+            "qualifications": ["2"],
+            "floor": "5",
+            "room": "506",
+            "time_off": ["5"]
+        },
+        {
+            "id": "b676",
+            "name": "ooooo",
+            "sex": "male",
+            "qualifications": ["2"],
+            "floor": "3",
+            "room": "304",
+            "time_off": ["2", "8"]
+        },
+        {
+            "id": "e8c0",
+            "name": "mmmmm",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "3",
+            "room": "304",
+            "time_off": ["3"]
+        },
+        {
+            "id": "1cee",
+            "name": "Phạm Tú Uyên",
+            "sex": "female",
+            "qualifications": ["1"],
+            "floor": "6",
+            "room": "605",
+            "time_off": ["3", "7"]
+        },
+        {
+            "id": "240a",
+            "name": "gggg",
+            "sex": "male",
+            "qualifications": ["1"],
+            "floor": "4",
+            "room": "405",
+            "time_off": ["8", "7"]
+        },
+        {
+            "id": "726f",
+            "name": "nguyen van nu",
+            "sex": "female",
+            "qualifications": ["2"],
+            "floor": "5",
+            "room": "505",
+            "time_off": ["5"]
+        },
+        {
+            "id": "69c5",
+            "name": "nhut ne",
+            "sex": "male",
+            "qualifications": ["1"],
+            "floor": "4",
+            "room": "405",
+            "time_off": ["2"]
+        }
+    ],
+    "patients": [
+        {
+            "general-info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "image:": "https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/400358333_368003342240632_3821298703715889007_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEoThoxxeYdetOR8iydjP2ZS6U5s4zrILlLpTmzjOsgudPHN0Wnnd5ElwmOMr-BFdm4yxpLoKy8BPKMurusMrL3&_nc_ohc=4K2IXepUyZIQ7kNvgFf1iF8&_nc_ht=scontent.fsgn5-15.fna&oh=00_AfDOQqNhgUSh8_z8qIv_SQA4ftZTSSpAx0BI2S_sZFMk2g&oe=663854E6",
+            "name:": "Nguyễn Văn A",
+            "birthday": "29-12-2003",
+            "blood_type": "AB",
+            "address": "26 Tô Ngọc Vân, Linh Trung, Thủ Đức, TPHCM"
+        }
+    ]
+}

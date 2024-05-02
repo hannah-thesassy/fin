@@ -4,18 +4,26 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddDoctorActivity from '../AddDoctorActivity';
-// import PatientInfo from '../PatientInfo';
-// import PatientInfo from '../PatientInfo';
+import PatientInfo from '../PatientInfo';
+
 const cx = classNames.bind(styles);
 
 function PatientDetail() {
-    // const [patientList, setPatientList] = useState([]);
+    console.log('PatientDetail is mounted');
+    const [patientList, setPatientList] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/patients').then((response) => {
-    //         setPatientList(response.data);
-    //     });
-    // },[]);
+    useEffect(() => {
+        axios
+            .get('http://localhost:3000/patients')
+            .then(
+                (response) => {
+                    console.log(response);
+                    setPatientList(response.data);
+                },
+                [patientList],
+            )
+            .catch((err) => console.log(err));
+    });
 
     return (
         <div className={cx('wrapper')}>
@@ -30,35 +38,11 @@ function PatientDetail() {
             {/* Add component */}
             <div className={cx('patient-info')}>
                 <p className={cx('title')}>Thông tin bệnh nhân</p>
-                <div className={cx('patient-info-wrapper')}>
-            <img className={cx('avatar')} src=" src/assets/patient-avt.png" ></img>
-            <div className={cx('body')}>
-                <h3 className={cx('body-title')}>Thông tin chung</h3>
-                <p className={cx('body-content')}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <ul className={cx('list-info')}>
-                    <li className={cx('list-info-item')}>
-                        <h4 className={cx('list-info-header')}>Họ và tên</h4>
-                        <p className={cx('list-info-content')}>Nguyễn Văn A </p>
-                    </li>
-                    <li className={cx('list-info-item')}>
-                        <h4 className={cx('list-info-header')}>Ngày sinh</h4>
-                        <p className={cx('list-info-content')}> 29-12-2003</p>
-                    </li>
-                    <li className={cx('list-info-item')}>
-                        <h4 className={cx('list-info-header')}>Nhóm máu</h4>
-                        <p className={cx('list-info-content')}> AB </p>
-                    </li>
-                    <li className={cx('list-info-item')}>
-                        <h4 className={cx('list-info-header')}>Địa chỉ</h4>
-                        <p className={cx('list-info-content')}>26 Tô Ngọc Vân, Linh Trung, Thủ Đức, TPHCM</p>
-                    </li>
-                </ul>
-            </div>
-        </div>   
+                <PatientInfo patient={patientList[0]} />
                 <div className={cx('history-wrapper')}>
                     <div className={cx('history-header-wrapper')}>
                         <h4 className={cx('history-wrapper-header')}>Lịch sử khám</h4>
-                        <AddDoctorActivity/>
+                        <AddDoctorActivity />
                     </div>
                     <div className={cx('history-title-wrapper')}>
                         <ul className={cx('history-title-list')}>

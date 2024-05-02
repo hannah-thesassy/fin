@@ -16,7 +16,7 @@ function Nurse() {
     };
     useEffect(() => {
         axios
-            .get('http://localhost:3001/nurses')
+            .get('http://localhost:3000/nurses')
             .then((response) => setNurseList(response.data))
             .then(() => setTotal(nurseList.length))
             .catch((error) => console.log(error));
@@ -24,7 +24,7 @@ function Nurse() {
 
     const createNurse = (newNurse) => {
         axios
-            .post('http://localhost:3001/nurses', newNurse)
+            .post('http://localhost:3000/nurses', newNurse)
             .then((response) => setNurseList([...nurseList, response.data]))
             .catch((error) => console.log(error));
     };
