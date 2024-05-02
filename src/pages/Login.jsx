@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../App.css"
-
+import "../App.css";
+import '../components/commons/Logo';
+import Logo from '../components/commons/Logo'
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -25,9 +26,8 @@ const Login = () => {
 
   return (
     <div className='login-page'>
-        <img className='main-logo' 
-            src="src\assets\main -logo.png">
-        </img>
+        <Logo/>
+        <h2>BKMEC</h2>
         <div className='login-form'>
             <h1>Đăng nhập</h1>
             <form onSubmit={handleSubmit}>

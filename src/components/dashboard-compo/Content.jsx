@@ -10,40 +10,55 @@ import
 function Content() {
 
   return (
-    <main className='dashboard-main-container'>
+    <div className='card-wrapper'>
         
         {/* <div className='main-cards'> */}
             {/* <Link to="/hospital-manage/doctor" style={{ textDecoration: 'none', color: 'inherit' }}> */}
                 <div className='card'>
-                    <div className='card-inner'>
-                        <h3>Bác sĩ hiện có</h3>
-                        <BsPeopleFill className='card_icon'/>
+                    <h3 className='card-title' >Bác sĩ hiện có</h3>
+                    <div className='card-body'>
+                        <div className='card-icon' >
+                        <img src="src/assets/doctor.png" ></img>
+                        </div>
+                        <div className='card-quantity'>
+                            <p className='card-quantity-title' >Tổng</p>
+                            <span className='card-quantity-sum' >300</span>
+                        </div>
                     </div>
                     {/* BACKEND GET Infor to DB - number of doctors */}
-                    <h1>300</h1>
                 </div>
             {/* </Link> */}
             <div className='card'>
-                <div className='card-inner'>
-                    <h3>Y tá hiện có</h3>
-                    <BsPeopleFill className='card_icon'/>
+                    <h3 className='card-title' >Y tá hiện có</h3>
+                    <div className='card-body'>
+                        <div className='card-icon' >
+                        <img src="src/assets/nurse.png" ></img>
+                        </div>
+                        <div className='card-quantity'>
+                            <p className='card-quantity-title' >Tổng</p>
+                            <span className='card-quantity-sum' >400</span>
+                        </div>
+                    </div>
+                    {/* BACKEND GET Infor to DB - number of doctors */}
                 </div>
-                {/* BACKEND GET Infor to DB - number of nurses */}
-                <h1>12</h1>
-            </div>
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>Bệnh nhân</h3>
-                    <BsPeopleFill className='card_icon'/>
+                <div className='card'>
+                    <h3 className='card-title' >Bệnh nhân nội trú</h3>
+                    <div className='card-body'>
+                        <div className='card-icon' >
+                        <img src="src/assets/patient.png" ></img>
+                        </div>
+                        <div className='card-quantity'>
+                            <p className='card-quantity-title' >Tổng</p>
+                            <span className='card-quantity-sum' >1200</span>
+                        </div>
+                    </div>
+                    {/* BACKEND GET Infor to DB - number of doctors */}
                 </div>
-                {/* BACKEND GET Infor to DB - number of patients */}
-                <h1>33</h1>
-            </div>
             
         {/* </div> */}
 
         
-    </main>
+    </div>
   )
 }
 

@@ -1,0 +1,12 @@
+{
+    "patients": [
+        {
+            "general-info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "image:": "https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/400358333_368003342240632_3821298703715889007_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEoThoxxeYdetOR8iydjP2ZS6U5s4zrILlLpTmzjOsgudPHN0Wnnd5ElwmOMr-BFdm4yxpLoKy8BPKMurusMrL3&_nc_ohc=4K2IXepUyZIQ7kNvgFf1iF8&_nc_ht=scontent.fsgn5-15.fna&oh=00_AfDOQqNhgUSh8_z8qIv_SQA4ftZTSSpAx0BI2S_sZFMk2g&oe=663854E6",
+            "name:": "Nguyễn Văn A",
+            "birthday": "29-12-2003",
+            "blood_type": "AB",
+            "address": "26 Tô Ngọc Vân, Linh Trung, Thủ Đức, TPHCM"
+        }
+    ]
+}

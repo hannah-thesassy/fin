@@ -4,6 +4,7 @@ import '../App.css'
 // import Header from '../components/commons/Header'
 // import Sidebar from '../components/commons/Sidebar'
 import Content from '../components/dashboard-compo/Content'
+import Header from '../components/commons/Header'
 
 function Dashboard() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
@@ -16,6 +17,7 @@ function Dashboard() {
     <div className='grid-container'>
       {/* <Header OpenSidebar={OpenSidebar}/>
       <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/> */}
+      <Header/>
       <Content />
     </div>
   )
