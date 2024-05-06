@@ -149,6 +149,7 @@
 .history-title-wrapper {
     background-color: #edf4fc;
     margin-top: 16px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
 }
 
 .history-title-list {
@@ -181,6 +182,7 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
     margin-top: 2px;
     margin-bottom: 2px;
+    justify-content: space-around;
 }
 
 .history-body-item {
@@ -202,4 +204,5 @@
 
 .history-body-item--edit {
     margin-left: 196px;
+    margin-right: 68px;
 }

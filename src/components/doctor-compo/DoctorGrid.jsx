@@ -186,10 +186,8 @@ const DoctorGrid = () => {
   const [doctors, setDoctors] = useState(initialDoctors);
   const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-
   const [editMode, setEditMode] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
-
   const itemsPerPage = 9;
 
     // const [query, setQuery] = useState('');
@@ -208,6 +206,7 @@ const DoctorGrid = () => {
   const handleChange = event => {
     setSearchVal(event.target.value);
   };
+
   useEffect(() => {
     const results = initialDoctors.filter(doctor =>
       doctor.name.toLowerCase().includes(searchVal.toLowerCase()));
@@ -220,7 +219,7 @@ const DoctorGrid = () => {
     // BACKEND ADD Infor to DB - new Doctor
 
     // Generate a new ID for the new medicine
-    const newDoctor = { 
+    const newDoctor = {     
       id: values.id,
       name: values.name,
       birthday: values.birthday,
@@ -417,9 +416,9 @@ const DoctorGrid = () => {
                 </div>
             ))} */}
         </div>
-        <div className="page-number" style={{textAlign: 'center', bottom: 0}}>
+        <div className="page-number" style={{textAlign: 'center', bottom: 0, marginTop: "8px"}}>
           {pageNumbers.map(number => (
-            <button key={number} onClick={() => setCurrentPage(number)}>
+            <button style={{padding: "4px 8px", marginLeft: "4px"}} key={number} onClick={() => setCurrentPage(number)}>
               {number}
             </button>
           ))}

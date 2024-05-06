@@ -1,140 +1,124 @@
-import classNames from 'classNames/bind';
-import styles from './PatientDetail.module.scss';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import classNames from 'classnames/bind';
+import { Link, useParams } from 'react-router-dom';
 import AddDoctorActivity from '../AddDoctorActivity';
 import PatientInfo from '../PatientInfo';
-
+import styles from './PatientDetail.module.scss';
+// import AddResult from '../AddResult';
+import { useState, useEffect } from 'react';
+// import ExaminationHistory from '../ExaminationHistory';
+import axios from 'axios';
+import UserInfo from '../../AuthContext';
+import { useAuth } from '../../AuthContext';
 const cx = classNames.bind(styles);
+import ExaminationHistory from '../ExaminationHistory';
+
+
 
 function PatientDetail() {
-    console.log('PatientDetail is mounted');
-    const [patientList, setPatientList] = useState([]);
+    const { patientId } = useParams();
+    
+    const { UserInfo, isAdmin } = useAuth();
+
+    const [patientInfo, setPatientInfo] = useState({});
+    const [Examhistory, setExamHistory] = useState([])
+    
+    //lay thong tin benh nhan (lay duoc toan bo thong tin benh nhan bao gom lich su kham)
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get("http://localhost:3000/patients");
+            setPatientInfo(response.data[0]);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+      
+        fetchData();
+      }, [patientId]
+    );
+
+    //goi API lay danh sach lich su kham benh cua benh nhan do
 
     useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get("http://localhost:3000/examination_history");
+            setExamHistory(response.data);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+      
+        fetchData();
+      }, [Examhistory]
+    );
+
+
+
+
+    //ham cap nhat lich su kham
+    const updateMedicalHistory = async (historyId, updatedData) => {
+        try {
+          const response = await axios.patch(`/patients/${patientId}/medical-history/${historyId}`, updatedData);
+          console.log(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+    };
+
+
+    const createExamination = (newExam) => {
         axios
-            .get('http://localhost:3000/patients')
-            .then(
-                (response) => {
-                    console.log(response);
-                    setPatientList(response.data);
-                },
-                [patientList],
-            )
-            .catch((err) => console.log(err));
-    });
-
+            .post('http://localhost:3000/examination_history', newExam)
+            .then((response) => setExamHistory([...Examhistory, response.data]))
+            .catch((error) => console.log(error));
+    };
+        
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('navbar')}>
-                <Link to="/hospital-manage/patient-schedule" className={cx('schedule-btn')}>
-                    Kế hoạch điều trị
-                </Link>
-                <Link to="/hospital-manage/patient" className={cx('list-btn')}>
-                    Danh sách bệnh nhân
-                </Link>
-            </div>
-            {/* Add component */}
-            <div className={cx('patient-info')}>
-                <p className={cx('title')}>Thông tin bệnh nhân</p>
-                <PatientInfo patient={patientList[0]} />
-                <div className={cx('history-wrapper')}>
-                    <div className={cx('history-header-wrapper')}>
-                        <h4 className={cx('history-wrapper-header')}>Lịch sử khám</h4>
-                        <AddDoctorActivity />
-                    </div>
-                    <div className={cx('history-title-wrapper')}>
-                        <ul className={cx('history-title-list')}>
-                            <li className={cx('history-title-item')}>Ngày</li>
-                            <li className={cx('history-title-item')}>Bác sĩ chỉ định</li>
-                            <li className={cx('history-title-item')}>Bác sĩ thực hiện</li>
-                            <li className={cx('history-title-item')}>Phương pháp</li>
-                            <li className={cx('history-title-item')}>Trạng thái</li>
-                            <li className={cx('history-title-item')}>Kết quả</li>
-                        </ul>
-                    </div>
+    <div className={cx('wrapper')}>
+        <div className={cx('navbar')}>
+            <Link to="/patient-schedule" className={cx('schedule-btn')}>
+                Kế hoạch điều trị
+            </Link>
+            <Link to="/patient" className={cx('list-btn')}>
+                Danh sách bệnh nhân
+            </Link>
+        </div>
+        {/* Add component */}
+        <div className={cx('patient-info')}>
+            <p className={cx('title')}>Thông tin bệnh nhân</p>
 
-                    <div className={cx('history-body-wrapper')}>
-                        <ul className={cx('history-body-list')}>
-                            <li className={cx('history-body-item--date')}>12-02-2023</li>
-                            <li className={cx('history-body-item')}>
-                                Trương Văn Nghĩa <br />
-                                BSNTH030821
-                            </li>
-                            <li className={cx('history-body-item')}>
-                                Trương Thanh An
-                                <br />
-                                BSNTH130821
-                            </li>
-                            <li className={cx('history-body-item', 'history-body-item--method')}>X-Ray</li>
-                            <li className={cx('history-body-item', 'history-body-item--status')}>Chờ kết quả</li>
-                            <li className={cx('history-body-item', 'history-body-item--result')}>Chi tiết</li>
-                        </ul>
-                        <ul className={cx('history-body-list')}>
-                            <li className={cx('history-body-item--date')}>12-02-2023</li>
-                            <li className={cx('history-body-item')}>
-                                Trương Văn Nghĩa <br />
-                                BSNTH030821
-                            </li>
-                            <li className={cx('history-body-item')}>
-                                Trương Thanh An
-                                <br />
-                                BSNTH130821
-                            </li>
-                            <li className={cx('history-body-item', 'history-body-item--method')}>X-Ray</li>
-                            <li className={cx('history-body-item', 'history-body-item--status')}>Chờ kết quả</li>
-                            <li className={cx('history-body-item', 'history-body-item--result')}>Chi tiết</li>
-                        </ul>
-                        <ul className={cx('history-body-list')}>
-                            <li className={cx('history-body-item--date')}>12-02-2023</li>
-                            <li className={cx('history-body-item')}>
-                                Trương Văn Nghĩa <br />
-                                BSNTH030821
-                            </li>
-                            <li className={cx('history-body-item')}>
-                                Trương Thanh An
-                                <br />
-                                BSNTH130821
-                            </li>
-                            <li className={cx('history-body-item', 'history-body-item--method')}>X-Ray</li>
-                            <li className={cx('history-body-item', 'history-body-item--status')}>Chờ kết quả</li>
-                            <li className={cx('history-body-item', 'history-body-item--result')}>Chi tiết</li>
-                        </ul>
-                        <ul className={cx('history-body-list')}>
-                            <li className={cx('history-body-item--date')}>12-02-2023</li>
-                            <li className={cx('history-body-item')}>
-                                Trương Văn Nghĩa <br />
-                                BSNTH030821
-                            </li>
-                            <li className={cx('history-body-item')}>
-                                Trương Thanh An
-                                <br />
-                                BSNTH130821
-                            </li>
-                            <li className={cx('history-body-item', 'history-body-item--method')}>X-Ray</li>
-                            <li className={cx('history-body-item', 'history-body-item--status')}>Chờ kết quả</li>
-                            <li className={cx('history-body-item', 'history-body-item--result')}>Chi tiết</li>
-                        </ul>
-                        <ul className={cx('history-body-list')}>
-                            <li className={cx('history-body-item--date')}>12-02-2023</li>
-                            <li className={cx('history-body-item')}>
-                                Trương Văn Nghĩa <br />
-                                BSNTH030821
-                            </li>
-                            <li className={cx('history-body-item')}>
-                                Trương Thanh An
-                                <br />
-                                BSNTH130821
-                            </li>
-                            <li className={cx('history-body-item', 'history-body-item--method')}>X-Ray</li>
-                            <li className={cx('history-body-item', 'history-body-item--status')}>Chờ kết quả</li>
-                            <li className={cx('history-body-item', 'history-body-item--result')}>Chi tiết</li>
-                        </ul>
-                    </div>
+            <PatientInfo
+                image={patientInfo.image}
+                generalInfo={patientInfo.generalInfo}
+                name={patientInfo.name}
+                birthday={patientInfo.birthday}
+                blood_type={patientInfo.blood_type}
+                address={patientInfo.address}
+            />
+            <div className={cx('history-wrapper')}>
+                <div className={cx('history-header-wrapper')}>
+                    <h4 className={cx('history-wrapper-header')}>Lịch sử khám</h4>
+                    <AddDoctorActivity callAPI={createExamination}  />
                 </div>
+                <div className={cx('history-title-wrapper')}>
+                    <ul className={cx('history-title-list')}>
+                        <li className={cx('history-title-item')}>Ngày</li>
+                        <li className={cx('history-title-item')}>Bác sĩ chỉ định</li>
+                        <li className={cx('history-title-item')}>Bác sĩ thực hiện</li>
+                        <li className={cx('history-title-item')}>Phương pháp</li>
+                        <li className={cx('history-title-item')}>Trạng thái</li>
+                        <li className={cx('history-title-item')}>Kết quả</li>
+                    </ul>
+                </div>
+                
+                <ExaminationHistory  
+                    ls = {Examhistory}
+                    handleUpdateHistory={updateMedicalHistory}
+                />
             </div>
         </div>
+    </div>
     );
 }
 

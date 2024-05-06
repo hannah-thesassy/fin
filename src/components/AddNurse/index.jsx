@@ -77,10 +77,10 @@ const CollectionCreateForm = ({ initialValues, onFormInstanceReady }) => {
                 >
                     <Row>
                         <Col span={14}>
-                            <Checkbox value="1">Điều dưỡng cơ bản</Checkbox>
+                            <Checkbox value="Điều dưỡng cơ bản">Điều dưỡng cơ bản</Checkbox>
                         </Col>
                         <Col span={14}>
-                            <Checkbox value="2">Điều dưỡng nâng cao</Checkbox>
+                            <Checkbox value="Điều dưỡng nâng cao">Điều dưỡng nâng cao</Checkbox>
                         </Col>
                     </Row>
                 </Checkbox.Group>

@@ -1,16 +1,17 @@
-import classNames from 'classNames/bind';
-import styles from './PatientSchedule.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import {Link} from 'react-router-dom'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classNames/bind';
+import { Link } from 'react-router-dom';
+import AddSchedule from '../AddSchedule';
+import styles from './PatientSchedule.module.scss';
 const cx = classNames.bind(styles);
 
 function PatientSchedule() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('navbar')}>
-                <Link to="/hospital-manage/patient-detail" className={cx('list-btn')}>
+
+                <Link to="/patient-detail" className={cx('list-btn')}>
                     Thoát
                 </Link>
             </div>
@@ -48,7 +49,7 @@ function PatientSchedule() {
                 <div className={cx('history-wrapper')}>
                     <div className={cx('history-header-wrapper')}>
                         <h4 className={cx('history-wrapper-header')}>Kế hoạch chi tiết</h4>
-                        <button className={cx('history-btn')}>Thêm kế hoạch điều trị</button>
+                        <AddSchedule />
                     </div>
                     <div className={cx('history-title-wrapper')}>
                         <ul className={cx('history-title-list')}>

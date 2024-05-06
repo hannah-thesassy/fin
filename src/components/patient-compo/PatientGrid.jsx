@@ -3,154 +3,26 @@ import { Button, Modal } from 'antd';
 import AddPatientForm from './AddPatientForm';
 import EditPatientForm from './EditPatientForm';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import { useSearch } from '../../SearchContext';
+import { useAuth } from '../../AuthContext';
 
-// Dữ liệu danh sách các bác sĩ
-const initialPatients = [
-    {
-        id: 1,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 2,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 3,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 4,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 5,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 6,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 7,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 8,
-        name: 'Bệnh nhân C',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 9,
-        name: 'Bệnh nhân B',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 10,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 11,
-        name: 'Bệnh nhân D',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    {
-        id: 12,
-        name: 'Bệnh nhân A',
-        birthday: 1970,
-        location: 'TP. HCM',
-        email: '@gmail.com',
-        phoneNumber: '123',
-        sex: 'Nam',
-        cccd: 'số cccd',
-        bloodType: 'A',
-    },
-    // Thêm các bác sĩ khác nếu cần
-];
+
+
 
 const PatientGrid = () => {
+    const {isAdmin} = useAuth();
     const [searchVal, setSearchVal] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [patients, setPatients] = useState(initialPatients);
+    const {searchItem} = useSearch();
+    const [patients, setPatients] = useState([]);
     const [visible, setVisible] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
 
     const [editMode, setEditMode] = useState(false);
     const [selectedPatient, setSelectedPatient] = useState(null);
-
+    const [patientList, setPatientList] = useState([]);
+    const [isSearch, setIsSearch] = useState(false);
     const itemsPerPage = 9;
 
     // const [query, setQuery] = useState('');
@@ -162,12 +34,34 @@ const PatientGrid = () => {
     //     );
     //     setFilteredItems(filtered);
     // }, [query]);
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    useEffect(()=> {
+        if (searchItem) {
+            setIsSearch(true);
+            axios.get(`http://localhost:3000/api/search?q=${searchItem}`)
+            .then(response => setPatientList(response.data))
+            .catch(err => {
+                console.error("Error fetching search result:",err);
+            }) 
+        } else {
+            axios.get("http://localhost:3000/patients")
+            .then(response => setPatientList(response.data))
+            .catch(err => {
+                console.error("Error fetching patients:",err);
+            }) 
+        }
+
+    },[searchItem]);
 
     const handleChange = (event) => {
         setSearchVal(event.target.value);
     };
+
     useEffect(() => {
-        const results = initialPatients.filter((patient) =>
+        const results = patientList.filter((patient) =>
             patient.name.toLowerCase().includes(searchVal.toLowerCase()),
         );
         setSearchResults(results);
@@ -270,20 +164,20 @@ const PatientGrid = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = patients.slice(indexOfFirstItem, indexOfLastItem);
 
-    const renderPatientRows = currentItems.map(patient => (
-        <Link to = "/hospital-manage/patient-detail" key={patient.id} className="doctor-card">
+    const renderPatientRows = patientList.map(patient => (
+        <Link to = {`/patient-detail`} key={patient.id} className="doctor-card">
             <h2>{patient.name}</h2>
             <p>
-                Năm sinh: {patient.birthday}, Nhóm máu: {patient.bloodType}
+                Năm sinh: {patient.birthday}, Nhóm máu: {patient.blood_type}
             </p>
             <div>
-                <button className="edit-btn" onClick={() => handleEdit(patient)}>
+                { isAdmin && <button className="edit-btn" onClick={() => handleEdit(patient)}>
                     Sửa
-                </button>
+                </button>}
                 {/* <button onClick={handleClick}>Sửa</button> */}
-                <button className="delete-btn" onClick={() => handleDelete(patient.id)}>
+                { isAdmin && <button className="delete-btn" onClick={() => handleDelete(patient.id)}>
                     Xoá
-                </button>
+                </button>}
             </div>
         </Link>
     ));
@@ -297,7 +191,7 @@ const PatientGrid = () => {
         <div>
             <div className="doctor-header">
                 <h1 className="doctor-total">Bệnh nhân hiện có</h1>
-                <div className="total-doctors">{patients.length}</div>
+                <div className="total-doctors">{patientList.length}</div>
                 <div className="search-bar">
                     <input
                         className="search-input"
@@ -312,9 +206,9 @@ const PatientGrid = () => {
                         // onChange={handleSearch}
                     />
                 </div>
-                <Button className="add-button" type="primary" onClick={showModal}>
+                { isAdmin && <Button className="add-button" type="primary" onClick={showModal}>
                     Thêm bệnh nhân
-                </Button>
+                </Button>}
                 {/* <button 
               onClick={handleClick}>Thêm bác sĩ</button> */}
                 <Modal
@@ -359,9 +253,10 @@ const PatientGrid = () => {
                 </div>
             ))} */}
             </div>
+
             <div className="page-number" style={{ textAlign: 'center', bottom: 0 }}>
                 {pageNumbers.map((number) => (
-                    <button key={number} onClick={() => setCurrentPage(number)}>
+                    <button key={number} onClick={() => paginate(number)}>
                         {number}
                     </button>
                 ))}

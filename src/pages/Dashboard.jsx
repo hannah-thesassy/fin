@@ -1,26 +1,24 @@
-import { useState } from 'react'
 import React from 'react';
-import '../App.css'
-// import Header from '../components/commons/Header'
-// import Sidebar from '../components/commons/Sidebar'
-import Content from '../components/dashboard-compo/Content'
-import Header from '../components/commons/Header'
+import '../App.css';
+import Layout from '../Layout';
+import Content from '../components/dashboard-compo/Content';
+import Logo from '../components/commons/Logo';
+import UserInfo from '../components/commons/UserInfo';
+import Sidebar from '../components/commons/Sidebar';
 
 function Dashboard() {
-  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
-
-  const OpenSidebar = () => {
-    setOpenSidebarToggle(!openSidebarToggle)
-  }
-
-  return (
-    <div className='grid-container'>
-      {/* <Header OpenSidebar={OpenSidebar}/>
-      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/> */}
-      <Header/>
-      <Content />
-    </div>
-  )
+    return (
+        <div className="grid-container">
+            <div style={{padding: "16px"}} >
+                <Logo />
+                <UserInfo />
+            </div>
+            <div style={{display:"flex", alignItems: "center"}} >
+                <Sidebar />
+                <Content />
+            </div>
+        </div>
+    );
 }
 
-export default Dashboard
+export default Dashboard;

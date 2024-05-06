@@ -4,23 +4,43 @@ import axios from 'axios';
 import AddNurse from '../../components/AddNurse';
 import styles from './Nurse.module.scss';
 import classNames from 'classNames/bind';
-import Header from '../../components/commons/Header'
+import UserInfo from '../../components/commons/UserInfo';
+import Logo from '../../components/commons/Logo';
+import Sidebar from '../../components/commons/Sidebar';
+import Layout from '../../Layout';
 
+import { useAuth } from '../../AuthContext';
 const cx = classNames.bind(styles);
 
 function Nurse() {
     const [nurseList, setNurseList] = useState([]);
-    const [total, setTotal] = useState(nurseList.length);
-    const updateTotal = () => {
-        setTotal((pre) => pre + 1);
+    const [searchVal, setSearchVal] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
+    const { isAdmin } = useAuth();
+
+    const handleChange = (event) => {
+        setSearchVal(event.target.value);
     };
+
     useEffect(() => {
-        axios
-            .get('http://localhost:3000/nurses')
-            .then((response) => setNurseList(response.data))
-            .then(() => setTotal(nurseList.length))
-            .catch((error) => console.log(error));
-    }, [nurseList]);
+        if (searchVal) {
+            const results = nurseList.filter(nurse =>
+                nurse.name.toLowerCase().includes(searchVal.toLowerCase()));
+                
+                setNurseList(results);
+                
+        } else {
+            setIsSearching(false);
+            fetch('http://localhost:3000/nurses')
+                .then((response) => response.json())
+                .then((data) => {
+                    setNurseList(data);
+                })
+                .catch((error) => console.error('Error fetching books:', error));
+        }
+    }, [searchVal]);
+
+
 
     const createNurse = (newNurse) => {
         axios
@@ -30,35 +50,41 @@ function Nurse() {
     };
 
     return (
-        <div className={cx('wrapper')}>
-            <Header />
-            <div className={cx('nurse-icon')}>
-                <img src="src/assets/nurse.png" />
-            </div>
-            <div className={cx('header')}>
-                <div className={cx('header-general')}>
-                    <p className={cx('header-title')}>Y tá hiện có</p>
-                    <span className={cx('header-count')}>{total}</span>
+        <Layout>
+            <div style={{ backgroundColor: '#ccc', marginLeft: '12px' }}>
+                <div className={cx('nurse-icon')}>
+                    <img src="src/assets/nurse.png" />
                 </div>
-                <input className={cx('search')} placeholder="Nhập tên/mã số nhân viên y tá cần tìm..."></input>
-                <div className={cx('add-nurse')}>
-                    <AddNurse callAPI={createNurse} updateTotal={updateTotal} />
+                <div className={cx('header')}>
+                    <div className={cx('header-general')}>
+                        <p className={cx('header-title')}>Y tá hiện có</p>
+                        <span className={cx('header-count')}>{nurseList.length}</span>
+                    </div>
+                    <input
+                        onChange={handleChange}
+                        value={searchVal}
+                        className={cx('search')}
+                        placeholder="Nhập tên/mã số nhân viên y tá cần tìm..."
+                    ></input>
+                    <div className={cx('add-nurse')}>
+                        {isAdmin && <AddNurse callAPI={createNurse} updateTotal={updateTotal} />}
+                    </div>
+                </div>
+                <div className={cx('nurse-space')}>
+                    <div className={cx('label')}>
+                        <div className={cx('id')}>Mã số</div>
+                        <div className={cx('name')}>Họ tên</div>
+                        <div className={cx('sex')}>Giới tính</div>
+                        <div className={cx('qualification')}>Chứng chỉ</div>
+                        <div className={cx('major')}>Chuyên môn</div>
+                        <div className={cx('floor')}>Tầng</div>
+                        <div className={cx('room')}>Phòng</div>
+                        <div className={cx('day-off')}>Ngày nghĩ trong tuần</div>
+                    </div>
+                    <NurseList ls={nurseList} />
                 </div>
             </div>
-            <div className={cx('nurse-space')}>
-                <div className={cx('label')}>
-                    <div className={cx('id')}>Mã số</div>
-                    <div className={cx('name')}>Họ tên</div>
-                    <div className={cx('sex')}>Giới tính</div>
-                    <div className={cx('qualification')}>Chứng chỉ</div>
-                    <div className={cx('major')}>Chuyên môn</div>
-                    <div className={cx('floor')}>Tầng</div>
-                    <div className={cx('room')}>Phòng</div>
-                    <div className={cx('day-off')}>Ngày nghĩ trong tuần</div>
-                </div>
-                <NurseList ls={nurseList} />
-            </div>
-        </div>
+        </Layout>
     );
 }
 

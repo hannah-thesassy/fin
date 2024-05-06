@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     padding: 16px;
+    min-height: 100vh;
 }
 
 .navbar {
@@ -27,7 +28,7 @@
     justify-content: center;
     &:hover {
         cursor: pointer;
-        background-color: #18d385 ;
+        background-color: #18d385;
     }
 }
 
@@ -164,7 +165,6 @@
     justify-content: space-between;
     padding-left: 0;
     padding: 0 16px;
-    
 }
 
 .history-title-item {
@@ -209,11 +209,23 @@
     font-weight: 600;
 }
 .history-body-item--result {
-    background-color: #44b865;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.view-result-btn {
+    padding: 8px;
+    border: none;
+    margin-top: 4px;
+    background-color: #1c7518;
     color: #fff;
-    padding: 8px 32px;
+    box-shadow: 0 2px 0 rgba(5,145,255,0.1);
+    font-size: 14px;
+    border-radius: 4px;
     &:hover {
         cursor: pointer;
-        background-color: #63e588;
+        background-color: #40963c;
     }
 }

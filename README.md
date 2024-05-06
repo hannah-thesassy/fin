@@ -1,3 +1,3 @@
 username: admin <br>
 password: admin <br>
-https://hannah-thesassy.github.io/hospital-manage/
+https://hannah-thesassy.github.io/

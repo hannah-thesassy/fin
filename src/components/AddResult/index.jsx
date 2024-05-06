@@ -1,6 +1,5 @@
-import { Button, Form, Input, Modal, Select } from 'antd';
+import { Button, Checkbox, Col, Form, Input, Modal, Row, Select } from 'antd';
 import { useEffect, useState } from 'react';
-
 // const cx = classNames.bind(styles)
 const { Option } = Select;
 const CollectionCreateForm = ({ initialValues, onFormInstanceReady }) => {
@@ -33,62 +32,53 @@ const CollectionCreateForm = ({ initialValues, onFormInstanceReady }) => {
     return (
         <Form layout="vertical" form={form} name="form_in_modal">
             <Form.Item
-                name="diagnose"
-                label="Chẩn đoán"
+                name="doctor_performed_name"
+                label="Mã số bác sĩ thực hiện"
                 rules={[
                     {
                         required: true,
-                        message: 'Vui lòng nhập chẩn đoán',
+                        message: 'Vui lòng nhập mã số bác sĩ thực hiện!',
                     },
                 ]}
             >
-                <Input.TextArea />
+                <Input />
             </Form.Item>
 
-            <Form.Item
-                name="method"
-                label="Phương pháp đề nghị"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Vui lòng chọn phương pháp!',
-                    },
-                ]}
-            >
-                <Select id="floor" placeholder="Vui lòng chọn phương pháp" onChange={handleFloorChange}>
-                    <Option value="Nội soi">Nội soi</Option>
-                    <Option value="Siêu âm">Siêu âm</Option>
-                    <Option value="Khám Tổng">Khám Tổng Quát</Option>
-                    <Option value="X-Ray">X-Ray</Option>
-                    <Option value="CT Scan">CT Scan</Option>
-                    <Option value="Xét Nghiệm">Xét Nghiệm</Option>
-                    <Option value="Sinh thiết">Sinh thiết</Option>
-                    <Option value="Đo điện">Đo điện tim</Option>
-                    <Option value="Phẩu thuật">Phẩu thuật</Option>
-                </Select>
-            </Form.Item>
 
             <Form.Item
-                name="point_description"
-                label="Mô tả chỉ định"
+                name="result description"
+                label="Mô tả kết quả"
                 rules={[
                     {
                         required: true,
-                        message: 'Vui lòng nhập mô tả chỉ định',
+                        message: 'Vui lòng nhập mô tả kết quả!',
                     },
                 ]}
             >
-                <Input.TextArea />
+                <Input.TextArea/>
             </Form.Item>
+            <Form.Item
+                name="conclusion"
+                label="Kết luận"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Vui lòng nhập kết luận!',
+                    },
+                ]}
+            >
+                <Input.TextArea/>
+            </Form.Item>
+            
         </Form>
     );
 };
-const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, callAPI }) => {
+const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues}) => {
     const [formInstance, setFormInstance] = useState();
     return (
         <Modal
             open={open}
-            title="Thêm hoạt động khám"
+            title="Thêm mới kết quả"
             okText="Xác nhận"
             cancelText="Hủy"
             okButtonProps={{
@@ -101,19 +91,7 @@ const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, ca
                     const values = await formInstance?.validateFields();
                     formInstance?.resetFields();
                     onCreate(values);
-                    const newValue = {
-                        ...values,
-                        // time: '12-03-2024',
-                        doctor_appointed_name: 'Trương Văn Nghĩa',
-                        doctor_appointed_id: 'BSNTH032146',
-                        // doctor_performed_name: 'Trương Thanh An',
-                        // doctor_performed_id: 'BSNTH034890',
-                        status: 'Chờ khám',
-                        result: '',
-                    };
-                    console.log(newValue);
 
-                    callAPI(newValue);
                 } catch (error) {
                     console.log('Failed:', error);
                 }
@@ -128,18 +106,19 @@ const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, ca
         </Modal>
     );
 };
-const AddDoctorActivity = ({ callAPI }) => {
+const AddResult = ({ handleUpdateHistory }) => {
     const [formValues, setFormValues] = useState();
     const [open, setOpen] = useState(false);
     const onCreate = (values) => {
         console.log('Received values of form: ', values);
         setFormValues(values);
+        console.log('Updated values of form: ', values);
         setOpen(false);
     };
     return (
         <>
             <Button type="primary" onClick={() => setOpen(true)}>
-                Thêm hoạt động khám
+                Nhập kết quả
             </Button>
             <CollectionCreateFormModal
                 open={open}
@@ -148,9 +127,8 @@ const AddDoctorActivity = ({ callAPI }) => {
                 initialValues={{
                     modifier: 'public',
                 }}
-                callAPI={callAPI}
             />
         </>
     );
 };
-export default AddDoctorActivity;
+export default AddResult;

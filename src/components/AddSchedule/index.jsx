@@ -1,6 +1,5 @@
-import { Button, Form, Input, Modal, Select } from 'antd';
+import { Button, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Select } from 'antd';
 import { useEffect, useState } from 'react';
-
 // const cx = classNames.bind(styles)
 const { Option } = Select;
 const CollectionCreateForm = ({ initialValues, onFormInstanceReady }) => {
@@ -32,63 +31,42 @@ const CollectionCreateForm = ({ initialValues, onFormInstanceReady }) => {
     }, []);
     return (
         <Form layout="vertical" form={form} name="form_in_modal">
-            <Form.Item
-                name="diagnose"
-                label="Chẩn đoán"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Vui lòng nhập chẩn đoán',
-                    },
-                ]}
-            >
-                <Input.TextArea />
-            </Form.Item>
+
 
             <Form.Item
-                name="method"
-                label="Phương pháp đề nghị"
+                name="room"
+                label="Nội dung kế hoạch"
                 rules={[
                     {
                         required: true,
-                        message: 'Vui lòng chọn phương pháp!',
+                        message: 'Vui lòng nhập nội dung kế hoạch!',
                     },
                 ]}
             >
-                <Select id="floor" placeholder="Vui lòng chọn phương pháp" onChange={handleFloorChange}>
-                    <Option value="Nội soi">Nội soi</Option>
-                    <Option value="Siêu âm">Siêu âm</Option>
-                    <Option value="Khám Tổng">Khám Tổng Quát</Option>
-                    <Option value="X-Ray">X-Ray</Option>
-                    <Option value="CT Scan">CT Scan</Option>
-                    <Option value="Xét Nghiệm">Xét Nghiệm</Option>
-                    <Option value="Sinh thiết">Sinh thiết</Option>
-                    <Option value="Đo điện">Đo điện tim</Option>
-                    <Option value="Phẩu thuật">Phẩu thuật</Option>
-                </Select>
+                <Input.TextArea/>
             </Form.Item>
-
             <Form.Item
-                name="point_description"
-                label="Mô tả chỉ định"
+                name="date"
+                label="Ngày dự kiến thực hiện"
                 rules={[
                     {
                         required: true,
-                        message: 'Vui lòng nhập mô tả chỉ định',
+                        message: 'Vui lòng chọn ngày dự kiến thực hiện!',
                     },
                 ]}
             >
-                <Input.TextArea />
+                <DatePicker/>
             </Form.Item>
+            
         </Form>
     );
 };
-const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, callAPI }) => {
+const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, callAPI, updateTotal }) => {
     const [formInstance, setFormInstance] = useState();
     return (
         <Modal
             open={open}
-            title="Thêm hoạt động khám"
+            title="Thêm mới y tá"
             okText="Xác nhận"
             cancelText="Hủy"
             okButtonProps={{
@@ -101,19 +79,8 @@ const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, ca
                     const values = await formInstance?.validateFields();
                     formInstance?.resetFields();
                     onCreate(values);
-                    const newValue = {
-                        ...values,
-                        // time: '12-03-2024',
-                        doctor_appointed_name: 'Trương Văn Nghĩa',
-                        doctor_appointed_id: 'BSNTH032146',
-                        // doctor_performed_name: 'Trương Thanh An',
-                        // doctor_performed_id: 'BSNTH034890',
-                        status: 'Chờ khám',
-                        result: '',
-                    };
-                    console.log(newValue);
-
-                    callAPI(newValue);
+                    callAPI(values);
+                    updateTotal();
                 } catch (error) {
                     console.log('Failed:', error);
                 }
@@ -128,7 +95,7 @@ const CollectionCreateFormModal = ({ open, onCreate, onCancel, initialValues, ca
         </Modal>
     );
 };
-const AddDoctorActivity = ({ callAPI }) => {
+const AddResult = ({ callAPI, updateTotal }) => {
     const [formValues, setFormValues] = useState();
     const [open, setOpen] = useState(false);
     const onCreate = (values) => {
@@ -139,7 +106,7 @@ const AddDoctorActivity = ({ callAPI }) => {
     return (
         <>
             <Button type="primary" onClick={() => setOpen(true)}>
-                Thêm hoạt động khám
+                Thêm kế hoạch điều trị
             </Button>
             <CollectionCreateFormModal
                 open={open}
@@ -149,8 +116,9 @@ const AddDoctorActivity = ({ callAPI }) => {
                     modifier: 'public',
                 }}
                 callAPI={callAPI}
+                updateTotal={updateTotal}
             />
         </>
     );
 };
-export default AddDoctorActivity;
+export default AddResult;

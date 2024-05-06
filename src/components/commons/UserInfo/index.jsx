@@ -1,15 +1,11 @@
 import React from 'react'
-import 
- {BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify}
- from 'react-icons/bs'
-
 import classNames from 'classNames/bind'
-import styles from './Header.module.scss'
+import styles from './UserInfo.module.scss'
 
 
 const cx = classNames.bind(styles)
 
-function Header({OpenSidebar}) {
+function UserInfo() {
   return (
     <div className={cx('header')}>
         <div className={cx('avatar')}>
@@ -23,4 +19,4 @@ function Header({OpenSidebar}) {
   )
 }
 
-export default Header
+export default UserInfo
