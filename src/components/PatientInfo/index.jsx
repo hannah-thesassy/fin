@@ -1,5 +1,7 @@
 import classNames from 'classNames/bind';
 import styles from './PatientInfo.module.scss';
+import React from 'react';
+
 
 const cx = classNames.bind(styles);
 

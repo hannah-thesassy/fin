@@ -1,4 +1,6 @@
 import './App.css';
+import React from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Doctor from './pages/Doctor';

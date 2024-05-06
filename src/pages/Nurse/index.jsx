@@ -1,5 +1,7 @@
 import NurseList from '../../components/NurseList';
 import { useState, useEffect } from 'react';
+import React from 'react';
+
 import axios from 'axios';
 import AddNurse from '../../components/AddNurse';
 import styles from './Nurse.module.scss';

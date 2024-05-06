@@ -71,7 +71,7 @@ const PatientGrid = () => {
     const handleAddPatient = (values) => {
         // Generate a new ID for the new medicine
         const newPatient = {
-            id: values.id,
+            // id: values.id,
             name: values.name,
             birthday: values.birthday,
             location: values.location,

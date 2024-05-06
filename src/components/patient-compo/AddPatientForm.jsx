@@ -57,7 +57,7 @@ const AddPatientForm = ({ onAddPatient}) => {
         available: true, // Set initial value here
       }}
     >
-      <Form.Item
+      {/* <Form.Item
         label="ID"
         name="id"
         rules={[
@@ -72,7 +72,7 @@ const AddPatientForm = ({ onAddPatient}) => {
             width: '100%',
           }}
         />
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item
         label="Họ tên"

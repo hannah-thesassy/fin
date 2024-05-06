@@ -1,4 +1,6 @@
 import classNames from 'classNames/bind';
+import React from 'react';
+
 import styles from './Logo.module.scss';
 import { Link } from 'react-router-dom';
 

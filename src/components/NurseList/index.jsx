@@ -1,4 +1,5 @@
 import classNames from 'classNames/bind';
+import React from 'react';
 
 import styles from './NurseList.module.scss';
 

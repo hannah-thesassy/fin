@@ -4,6 +4,8 @@ import classNames from 'classNames/bind';
 import { Link } from 'react-router-dom';
 import AddSchedule from '../AddSchedule';
 import styles from './PatientSchedule.module.scss';
+import React from 'react';
+
 const cx = classNames.bind(styles);
 
 function PatientSchedule() {

@@ -1,4 +1,4 @@
-import classNames from 'classnames/bind';
+import classNames from 'classNames/bind';
 import { Link, useParams } from 'react-router-dom';
 import AddDoctorActivity from '../AddDoctorActivity';
 import PatientInfo from '../PatientInfo';
@@ -11,6 +11,7 @@ import UserInfo from '../../AuthContext';
 import { useAuth } from '../../AuthContext';
 const cx = classNames.bind(styles);
 import ExaminationHistory from '../ExaminationHistory';
+import React from 'react';
 
 
 

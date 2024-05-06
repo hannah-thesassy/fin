@@ -1,9 +1,11 @@
 import styles from './ExaminationHistory.module.scss';
-import classNames from 'classnames/bind';
+import classNames from 'classNames/bind';
 import AddResult from '../AddResult';
 const cx = classNames.bind(styles);
 import { useState } from 'react';
 import { Button, Modal } from 'antd';
+import React from 'react';
+
 
 function ExaminationHistory({ls, handleUpdateHistory}) {
     const [isModalOpen, setIsModalOpen] = useState(false);

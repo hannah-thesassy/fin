@@ -220,7 +220,7 @@ const DoctorGrid = () => {
 
     // Generate a new ID for the new medicine
     const newDoctor = {     
-      id: values.id,
+      // id: values.id,          ///////// comment lại chỗ này giúp t
       name: values.name,
       birthday: values.birthday,
       location: values.location,

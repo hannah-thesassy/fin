@@ -125,7 +125,7 @@ const MedicineList = () => {
     const handleAddMedicine = (values) => {
         // Generate a new ID for the new medicine
         const newMedicine = {
-            id: values.id,
+            // id: values.id,
             name: values.name,
             type: values.type,
             unitPrice: values.unitPrice,

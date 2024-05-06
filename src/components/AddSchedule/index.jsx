@@ -1,5 +1,7 @@
 import { Button, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Select } from 'antd';
 import { useEffect, useState } from 'react';
+import React from 'react';
+
 // const cx = classNames.bind(styles)
 const { Option } = Select;
 const CollectionCreateForm = ({ initialValues, onFormInstanceReady }) => {

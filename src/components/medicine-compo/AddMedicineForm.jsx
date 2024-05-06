@@ -46,7 +46,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
             form={form}
             onFinish={onFinish}
         >
-            <Form.Item
+            {/* <Form.Item
                 label="ID"
                 name="id"
                 rules={[
@@ -62,7 +62,7 @@ const AddMedicineForm = ({ onAddMedicine }) => {
                         width: '100%',
                     }}
                 />
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
                 label="Tên thuốc"
